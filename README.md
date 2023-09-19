@@ -32,4 +32,4 @@ Gabriel Rodrigues Magalhães - grm@cesar.school
 
 ## 2) Protótipo de Lo-Fi
 ### 2.1) [Sketches e Storyboards](https://www.figma.com/file/Q16rMUsrIwxwDSviLcspFJ/Untitled?type=design&node-id=0%3A1&mode=design&t=VcpbQQzVQNpfaoXH-1)
-### 2.2) [ScreenCast]()
+### 2.2) [ScreenCast](https://drive.google.com/file/d/1WpkxE7l7srGx4rpUwu9uf-Srxe_NVIsM/view?usp=sharing)
