@@ -15,4 +15,4 @@ Alec Carneiro Theotonio - act@cesar.school
 
 Gabriel Rodrigues Magalhães - grm@cesar.school
 
-
+Nosso quadro no Jira - https://kickofffps.atlassian.net/jira/software/projects/CES/boards/2/backlog
