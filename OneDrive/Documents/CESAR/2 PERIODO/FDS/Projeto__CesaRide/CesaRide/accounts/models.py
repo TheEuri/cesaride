@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django import forms
 
 # Create your models here.
 
@@ -14,3 +15,22 @@ class CustomUser(AbstractUser):
 
     # O carro que o usuário usa para dar caronas
     car_model = models.CharField(max_length=30, blank=True)
+
+    DRIVER = 'DR'
+    PASSENGER = 'PS'
+    ROLE_CHOICES = [
+        (DRIVER, 'Motorista'),
+        (PASSENGER, 'Passageiro'),
+    ]
+    role = models.CharField(
+        max_length=2,
+        choices=ROLE_CHOICES,
+        default=PASSENGER,
+    )
+
+class LoginForm (forms.Form):
+    username = forms.CharField()
+
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    role = forms.ChoiceField(choices=CustomUser.ROLE_CHOICES)

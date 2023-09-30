@@ -23,3 +23,6 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = UserCreationForm.Meta.fields + ('username', 'email', 'password1', 'password2', 'phone_number','car_model', 'is_student', 'is_colaborador')
 
+class LoginForm(forms.Form):
+    role = forms.ChoiceField(choices=CustomUser.ROLE_CHOICES)
+
