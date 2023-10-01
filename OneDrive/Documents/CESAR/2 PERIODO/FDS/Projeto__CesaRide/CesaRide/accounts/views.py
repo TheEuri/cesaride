@@ -46,7 +46,7 @@ def signup(request):
 
             my_user= User.objects.create_user(username,email,pass1)
             my_user.save()
-            return redirect('choose_role')
+            return redirect('login')
         
 
 
@@ -65,8 +65,7 @@ def signin(request):
             login(request,user)
             return redirect('choose_role')
         else:
-            return HttpResponse ("Username or Password is incorrect!!!")
-
+            return HttpResponse ("Nome de Usuário ou Senha incorretos!")
     return render (request,'registro/signin.html')
 
 
@@ -76,12 +75,15 @@ def LogoutPage (request):
 
 
 def driver_home (request):
-    #inserir codigo
-    return render(request, 'registro/driver_home.html')
+    username=request.user.username
+    username = username.capitalize()
+    return render(request, 'registro/driver_home.html', {'username':username})
 
 
 def passenger_home (request):
-    return render (request,'registro/passenger_home.html')
+    username=request.user.username
+    username = username.capitalize()
+    return render (request,'registro/passenger_home.html', {'username':username})
 
 def choose_role(request):
     if request.method == 'POST':

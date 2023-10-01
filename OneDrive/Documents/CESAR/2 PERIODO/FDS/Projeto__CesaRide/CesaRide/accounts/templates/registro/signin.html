@@ -33,25 +33,8 @@ body{
     position: absolute;
     border-radius: 50%;
 }
-.shape:first-child{
-    background: linear-gradient(
-        #1845ad,
-        #23a2f6
-    );
-    left: -80px;
-    top: -80px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -30px;
-    bottom: -80px;
-}
 form{
-    height: 520px;
+    height: 580px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -108,6 +91,7 @@ button{
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 30px;
 }
 .social{
   margin-top: 30px;
@@ -132,6 +116,7 @@ button{
   margin-right: 4px;
 }
 
+
     </style>
 </head>
 <body>
@@ -140,21 +125,22 @@ button{
         <div class="shape"></div>
     </div>
     <form method="post">
-        <h3>Login</h3>
+        <h1 style="text-align: center;color: #f09819;">CesaRide</h1> 
+        <h3>Faça seu login</h3>
         {% csrf_token %} 
         <label for="username">Nome de Usuário</label>
-        <input type="text" placeholder="Enter Username" id="username" name="username">
+        <input type="text" placeholder="Nome de Usuário" id="username" name="username">
 
-        <label for="password">Password</label>
+        <label for="password">Senha</label>
         <input type="password" placeholder="Senha" id="password" name="pass">
 
-        <button type="submit">Log In</button>
+        <button type="submit">Entrar</button>
         <!-- <input type="button" value=""> -->
         <!-- <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div> -->
-        <a href="{% url 'signup' %}" >Crie uma conta</a>
-    </form>
+        <a href="{% url 'signup' %}">Crie uma conta</a>
+    </form> 
 </body>
 </html>

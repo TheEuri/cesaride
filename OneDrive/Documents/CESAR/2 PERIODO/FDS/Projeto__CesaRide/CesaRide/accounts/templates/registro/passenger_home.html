@@ -1,23 +1,254 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <title>Passageiro</title>
+    <style>
+    * {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  font-size: 14px;
+}
+a {
+  text-decoration: none;
+}
+.v2_17 {
+  width: 100%;
+  height: 1080px;
+  background: rgba(8,7,16,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v2_90 {
+  width: 100%;
+  height: 100%;
+  background: rgba(8,7,16,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 205px;
+  overflow: hidden;
+}
+.v2_89 {
+  width: 307px;
+  height: 100%;
+  background: rgba(40,39,46,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v2_66 {
+  width: 138px;
+  color: rgba(255,122,0,1);
+  position: absolute;
+  top: 52px;
+  left: 84px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.v2_75 {
+  width: 700px;
+  color: rgba(255,122,0,1);
+  position: absolute;
+  top: 237px;
+  left: 784px;
+  font-family: Poppins;
+  font-weight: Regular;
+  font-size: 64px;
+  opacity: 1;
+  text-align: left;
+}
+.v2_94 {
+  width: 307px;
+  color: rgba(255,122,0,1);
+  position: absolute;
+  top: 244px;
+  font-family: Poppins;
+  font-weight: Regular;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.v2_76 {
+  width: 638px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 393px;
+  left: 790px;
+  font-family: Poppins;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: center;
+}
+.v2_92 {
+  width: 92px;
+  height: 92px;
+  background-color: white;
+  opacity: 1;
+  position: absolute;
+  top: 139px;
+  left: 107px;
+  border-radius: 50%;
+}
+.v2_95 {
+  width: 224px;
+  height: 47px;
+  background: rgba(61,59,71,1);
+  opacity: 1;
+  position: absolute;
+  top: 309px;
+  left: 41px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.v2_97 {
+  width: 198px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 319px;
+  left: 54px;
+  font-family: Poppins;
+  font-weight: Regular;
+  font-size: 18px;
+  opacity: 1;
+  text-align: center;
+}
+.v2_98 {
+  width: 224px;
+  height: 47px;
+  background: rgba(61,59,71,1);
+  opacity: 1;
+  position: absolute;
+  top: 380px;
+  left: 41px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.v2_99 {
+  width: 198px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 390px;
+  left: 54px;
+  font-family: Poppins;
+  font-weight: Regular;
+  font-size: 18px;
+  opacity: 1;
+  text-align: center;
+}
+.v201_3 {
+  width: 225px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 452px;
+  left: 40px;
+  font-family: Poppins;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(61,59,71,1);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+.v201_3:hover {
+  background: rgba(90,88,105,1);
+}
+.v2_111 {
+  width: 80px;
+  height: 80px;
+  background: url("https://i.pinimg.com/564x/51/65/bb/5165bbc3564b4296c70371b75c9774b0.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 145px;
+  left: 113px;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  overflow: hidden;
+}
+.v8_138 {
+  width: 654px;
+  height: 492px;
+  background: rgba(40,39,46,1);
+  opacity: 1;
+  position: absolute;
+  top: 351px;
+  left: 787px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
 
-    <title>PASSENGER HOME Page</title>
+    </style>
   </head>
   <body>
-    <h1>Home Page</h1>
-    <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+    <div class="v2_17">
+      <div class="v2_90">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+      </div>
+      <div class="v8_138">
+        
+      </div>
+      <div class="v2_89">
+
+      </div>
+      <span class="v2_66">CesaRide</span>
+      <span class="v2_75">Caronas Disponíveis</span>
+      <span class="v2_94">{{username}}</span>
+      <span class="v2_76">Ops... Parece que não há nenhuma corrida disponível no momento, tente mais tarde.</span>
+      <div class="v2_92">
+
+      </div><div class="v2_95">
+
+      </div>
+      <span class="v2_97">Perfil</span>
+      <div class="v2_98">
+
+      </div>
+      <div class="v201_2">
+
+      </div>
+      <span class="v2_99">Histórico de Corridas</span>
+      <a href="/driver_home" class="v201_3">Alterar para motorista</a>
+      <div class="v2_111">
+
+      </div>
+    </div>
+    </body>
+    </html>

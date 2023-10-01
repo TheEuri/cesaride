@@ -30,23 +30,6 @@
             position: absolute;
             border-radius: 50%;
         }
-        .shape:first-child {
-            background: linear-gradient(
-                #1845ad,
-                #23a2f6
-            );
-            left: -80px;
-            top: -80px;
-        }
-        .shape:last-child {
-            background: linear-gradient(
-                to right,
-                #ff512f,
-                #f09819
-            );
-            right: -80px;
-            bottom: -80px;
-        }
         form {
             max-width: 450px;
             width: 100%;
@@ -107,6 +90,7 @@
             font-weight: 600;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 30px;
         }
         .social {
             margin-top: 20px;
@@ -149,13 +133,13 @@
         <input type="text" placeholder="Nome de Usuário" name="username" id="username">
 
         <label for="email">Email</label>
-        <input type="email" placeholder="Email ou Telefone" name="email" id="email">
+        <input type="email" placeholder="Email" name="email" id="email">
 
         <label for="password1">Senha</label>
-        <input type="password" placeholder="Password" id="password1" name="password1">
+        <input type="password" placeholder="Senha" id="password1" name="password1">
 
         <label for="password2">Confirme a Senha</label>
-        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+        <input type="password" placeholder="Confirmar Senha" id="password2" name="password2">
 
         <label for="phone_number"> Número de Telefone</label>
         <input type="text" placeholder="Telefone" name="phone_number" id = "phone_number">
@@ -166,9 +150,9 @@
         <label for="is_colaborador">É Colaborador?</label>
         <input type="checkbox" name="is_colaborador" id="is_colaborador">
 
-        <button type="submit">Signup</button>
+        <button type="submit">Criar conta</button>
         
-        <a href="{% url 'login' %}" >eu já possuo uma conta</a>
+        <a href="{% url 'login' %}" >Já possuo uma conta</a>
     </form>
 </body>
 </html>
