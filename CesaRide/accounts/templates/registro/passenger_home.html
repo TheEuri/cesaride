@@ -1,189 +1,78 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
-    <link href="./css/main.css" rel="stylesheet" />
-    <title>Passageiro</title>
-    <style>
+<head>
+  <meta charset="UTF-8">
+  <title>CesaRide - Passageiro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-9dJz9w5JZ1j5JZv6y5v5zvZzQzv8zvJ5z7GJ6sJQ7y8zJ7tZz7JzvZzvJ5zvZzQzv8zvJ5z7GJ6sJQ7y8zJ7tZz7JzvZzQzv8zvJ5zvZzQzv8zvJ5z7GJ6sJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+  <style>
+    /* Estilos gerais */
     * {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-}
-body {
-  font-size: 14px;
-}
-a {
-  text-decoration: none;
-}
-.v2_17 {
-  width: 100%;
-  height: 1080px;
-  background: rgba(8,7,16,1);
-  opacity: 1;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v2_90 {
-  width: 100%;
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #080710;
+    }
+    
+    /* Estilos do menu */
+    .sidebar {
+  width: 300px;
   height: 100%;
-  background: rgba(8,7,16,1);
-  opacity: 1;
-  position: absolute;
-  top: 0px;
-  left: 205px;
-  overflow: hidden;
-}
-.v2_89 {
-  width: 307px;
-  height: 100%;
-  background: rgba(40,39,46,1);
-  opacity: 1;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v2_66 {
-  width: 138px;
-  color: rgba(255,122,0,1);
-  position: absolute;
-  top: 52px;
-  left: 84px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Montserrat;
-  font-weight: Bold;
-  font-size: 32px;
-  opacity: 1;
-  text-align: center;
-}
-.v2_75 {
-  width: 700px;
-  color: rgba(255,122,0,1);
-  position: absolute;
-  top: 237px;
-  left: 784px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 64px;
-  opacity: 1;
-  text-align: left;
-}
-.v2_94 {
-  width: 307px;
-  color: rgba(255,122,0,1);
-  position: absolute;
-  top: 244px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
+  background: #18152c;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  transition: left 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.v2_76 {
-  width: 638px;
-  color: rgba(255,255,255,1);
-  position: absolute;
-  top: 393px;
-  left: 790px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 24px;
-  opacity: 1;
-  text-align: center;
-}
-.v2_92 {
-  width: 92px;
-  height: 92px;
-  background-color: white;
-  opacity: 1;
-  position: absolute;
-  top: 139px;
-  left: 107px;
-  border-radius: 50%;
-}
-.v2_95 {
-  width: 224px;
-  height: 47px;
-  background: rgba(61,59,71,1);
-  opacity: 1;
-  position: absolute;
-  top: 309px;
-  left: 41px;
-  border-top-left-radius: 10px;
+  justify-items: center;
   border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  overflow: hidden;
-}
-.v2_97 {
-  width: 198px;
-  color: rgba(255,255,255,1);
-  position: absolute;
-  top: 319px;
-  left: 54px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 18px;
-  opacity: 1;
-  text-align: center;
-}
-.v2_98 {
-  width: 224px;
-  height: 47px;
-  background: rgba(61,59,71,1);
-  opacity: 1;
-  position: absolute;
-  top: 380px;
-  left: 41px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  overflow: hidden;
-}
-.v2_99 {
-  width: 198px;
-  color: rgba(255,255,255,1);
-  position: absolute;
-  top: 390px;
-  left: 54px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 18px;
-  opacity: 1;
-  text-align: center;
-}
-.v201_3 {
-  width: 225px;
-  color: rgba(255,255,255,1);
-  position: absolute;
-  top: 452px;
-  left: 40px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 16px;
-  opacity: 1;
-  text-align: center;
-  cursor: pointer;
-  background: rgba(61,59,71,1);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 10px;
 }
 
-.v201_3:hover {
-  background: rgba(90,88,105,1);
+    .sidebar.show {
+      left: 0;
+    }
+
+    .menu-toggle {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      background: #080710;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+   
+
+    .sidebar-header {
+      padding: 5px 20px 20px 20px;
+      background: rgba(255, 122, 0, 1);
+
+      text-align: center;
+      align-self: normal;
+    }
+
+    .sidebar-header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .sidebar-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 10px 20px 10px;
 }
-.v2_111 {
+
+.sidebar-profile {
   width: 80px;
   height: 80px;
   background: url("https://i.pinimg.com/564x/51/65/bb/5165bbc3564b4296c70371b75c9774b0.jpg");
@@ -191,64 +80,173 @@ a {
   background-position: center center;
   background-size: cover;
   opacity: 1;
-  position: absolute;
-  top: 145px;
-  left: 113px;
-  border-top-left-radius: 60px;
-  border-top-right-radius: 60px;
-  border-bottom-left-radius: 60px;
-  border-bottom-right-radius: 60px;
-  overflow: hidden;
-}
-.v8_138 {
-  width: 654px;
-  height: 492px;
-  background: rgba(40,39,46,1);
-  opacity: 1;
-  position: absolute;
-  top: 351px;
-  left: 787px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-radius: 60px;
   overflow: hidden;
 }
 
-    </style>
-  </head>
+.sidebar-profile-name {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 18px;
+}
+
+    .sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+  align-self: left;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 10px;
+  background: rgba(255, 122, 0, 1);
+  border-top-right-radius: 10px;
+
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close-sidebar svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+    .sidebar-nav li {
+      padding-top: 5px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      padding: 10px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s ease-in-out;
+      border-radius: 5px;
+    }
+
+    .sidebar-nav a:hover {
+      background: rgba(90, 88, 105, 1);
+      border-radius: 5px;
+    }
+
+    /* Estilos do conteúdo */
+    .content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    .menu-toggle.hide {
+  display: none;
+}
+
+.sidebar-logout {
+  display: block;
+  color: #fff;
+  font-weight: 600;
+}
+
+
+.sidebar-logout-btn {
+  margin-top: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  background: #e74c3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 8px 30px 8px 30px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.sidebar-logout-btn:hover {
+  background: #c0392b;
+}
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .sidebar {
+        left: -300px;
+      }
+
+      .sidebar.show {
+        left: 0;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
   <body>
-    <div class="v2_17">
-      <div class="v2_90">
-
+    <div class="sidebar">
+      <div class="menu-container">
+        <button class="close-sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#fff">
+            <path d="M18.3 5.7c-.4-.4-1-.4-1.4 0L12 10.6 7.1 5.7c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4L10.6 12l-4.9 4.9c-.4.4-.4 1 0 1.4.2.2.5.3.7.3s.5-.1.7-.3L12 13.4l4.9 4.9c.2.2.5.3.7.3s.5-.1.7-.3c.4-.4.4-1 0-1.4L13.4 12l4.9-4.9c.4-.4.4-1 0-1.4z"/>
+          </svg>
+        </button>
       </div>
-      <div class="v8_138">
-        
+      <div class="sidebar-header">
+        <h1>CesaRide</h1>
       </div>
-      <div class="v2_89">
-
+      <div class="sidebar-profile-container">
+        <div class="sidebar-profile"></div>
+        <div class="sidebar-profile-name">{{ username }}</div>
       </div>
-      <span class="v2_66">CesaRide</span>
-      <span class="v2_75">Caronas Disponíveis</span>
-      <span class="v2_94">{{username}}</span>
-      <span class="v2_76">Ops... Parece que não há nenhuma corrida disponível no momento, tente mais tarde.</span>
-      <div class="v2_92">
-
-      </div><div class="v2_95">
-
-      </div>
-      <span class="v2_97">Perfil</span>
-      <div class="v2_98">
-
-      </div>
-      <div class="v201_2">
-
-      </div>
-      <span class="v2_99">Histórico de Corridas</span>
-      <a href="/driver_home" class="v201_3">Alterar para motorista</a>
-      <div class="v2_111">
-
-      </div>
+      <ul class="sidebar-nav">
+        <li><a href="#">Perfil</a></li>
+        <li><a href="#">Histórico de corridas</a></li> 
+        <li><a href="#">Alterar para motorista</a></li>
+      </ul>
+      <a href="{% url 'logout' %}" style="margin-top: auto; color: inherit;
+      text-decoration: none;">
+      <button class="sidebar-logout-btn" >
+      <span class="sidebar-logout">Sair</span>
+    </button>
+    </a>
+    
     </div>
-    </body>
-    </html>
+    <button class="menu-toggle" id="menu-toggle">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#fff">
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </svg>
+    </button>
+    <div class="content">
+      <!-- Conteúdo da página -->
+    </div>
+    <script>
+      const menuToggle = document.querySelector('.menu-toggle');
+      const sidebar = document.querySelector('.sidebar');
+      const closeSidebar = document.querySelector('.close-sidebar');
+
+      menuToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('show');
+  menuToggle.classList.toggle('hide');
+});
+
+closeSidebar.addEventListener('click', () => {
+  sidebar.classList.remove('show');
+  menuToggle.classList.remove('hide');
+});
+    </script>
+  </body>
+</html>
