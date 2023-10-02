@@ -39,7 +39,7 @@ Gabriel Rodrigues Magalhães - grm@cesar.school
 # Entrega 2
 
 ## 1) Diagrama de Atividades
-[(colar aqui)](https://cdn.discordapp.com/attachments/1145786233935634483/1158548500884226168/Diagrama_em_branco_4.png?ex=651ca5df&is=651b545f&hm=bbee947dc82df5db88d6f2648b3f8c0a3c36be938207c36819b5a0e0525a04cb&)
+[(Diagrama de Atividades)](https://cdn.discordapp.com/attachments/1145786233935634483/1158548500884226168/Diagrama_em_branco_4.png?ex=651ca5df&is=651b545f&hm=bbee947dc82df5db88d6f2648b3f8c0a3c36be938207c36819b5a0e0525a04cb&)
 
 ## 2) Issue/BugTracker
 (colar print aqui)
