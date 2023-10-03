@@ -42,7 +42,8 @@ Gabriel Rodrigues Magalhães - grm@cesar.school
 ![(Diagrama de Atividades)](https://cdn.discordapp.com/attachments/1145786233935634483/1158548500884226168/Diagrama_em_branco_4.png?ex=651ca5df&is=651b545f&hm=bbee947dc82df5db88d6f2648b3f8c0a3c36be938207c36819b5a0e0525a04cb&)
 
 ## 2) Issue/BugTracker
-![bugtracker]([https://i.ibb.co/3S6dNY2/Captura-de-tela-2023-10-02-233342.png](https://i.ibb.co/YfnQkTm/Captura-de-tela-2023-10-02-233342.png))
+![Captura de tela 2023-10-02 233342](https://github.com/TheEuri/cesaride/assets/62456615/91664296-aa2c-44d9-8056-f43f4721afc5)
+
 
 ## 3) Deployment das Histórias em produção
 ### 3.1) Link 
