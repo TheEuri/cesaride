@@ -179,6 +179,26 @@
 .sidebar-logout-btn:hover {
   background: #c0392b;
 }
+.car-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.car-item {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .car-item {
+    width: 100%;
+  }
+}
 
     /* Estilos responsivos */
     @media (max-width: 768px) {
@@ -213,10 +233,13 @@
         <div class="sidebar-profile-name">{{ username }}</div>
       </div>
       <ul class="sidebar-nav">
+        <li><a href="#">Início</a></li>
         <li><a href="#">Perfil</a></li>
         <li><a href="#">Histórico de corridas</a></li> 
-        <li><a href="#">Alterar para passageiro</a></li>
-        <li><a href="{% url 'car_create' %}">Gerenciar veículos</a></li>
+        <li><a href="{% url 'pagina_passageiro' %}">Alterar para passageiro</a></li>
+        <li><a href="{% url 'car_list' %}">Ver meus carros</a></li>
+        <li><a href="{% url 'car_create' %}">Criar veículo</a></li>
+
       </ul>
       <a href="{% url 'logout' %}" style="margin-top: auto; color: inherit;
       text-decoration: none;">
@@ -232,7 +255,7 @@
       </svg>
     </button>
     <div class="content">
-      <!-- Conteúdo da página -->
+      
     </div>
     <script>
       const menuToggle = document.querySelector('.menu-toggle');

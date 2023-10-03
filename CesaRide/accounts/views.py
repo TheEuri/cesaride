@@ -78,7 +78,8 @@ def LogoutPage (request):
 def driver_home (request):
     username=request.user.username
     username = username.capitalize()
-    return render(request, 'registro/driver_home.html', {'username':username})
+    cars = Car.objects.filter(user=request.user)
+    return render(request, 'registro/driver_home.html', {'username':username, 'cars': cars})
 
 
 def passenger_home (request):
@@ -118,5 +119,11 @@ def car_create(request):
     else:
         form = CarForm()
     return render(request, 'car_create.html', {'form': form})
+
+def car_list (request):
+    username=request.user.username
+    username = username.capitalize()
+    cars = Car.objects.filter(user=request.user)
+    return render(request, 'car_list.html', {'username':username, 'cars': cars})
 
 

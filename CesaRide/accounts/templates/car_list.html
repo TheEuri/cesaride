@@ -1,6 +1,6 @@
 <head>
   <meta charset="UTF-8">
-  <title>CesaRide - Passageiro</title>
+  <title>CesaRide - Lista de carros</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-9dJz9w5JZ1j5JZv6y5v5zvZzQzv8zvJ5z7GJ6sJQ7y8zJ7tZz7JzvZzvJ5zvZzQzv8zvJ5z7GJ6sJQ7y8zJ7tZz7JzvZzQzv8zvJ5zvZzQzv8zvJ5z7GJ6sJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
   <style>
@@ -39,7 +39,6 @@
 
     .menu-toggle {
       display: block;
-      position: fixed;
       top: 0;
       left: 0;
       padding: 10px;
@@ -179,6 +178,27 @@
 .sidebar-logout-btn:hover {
   background: #c0392b;
 }
+.car-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.car-item {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #18152c;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .car-item {
+    width: 100%;
+  }
+}
 
     /* Estilos responsivos */
     @media (max-width: 768px) {
@@ -213,10 +233,12 @@
         <div class="sidebar-profile-name">{{ username }}</div>
       </div>
       <ul class="sidebar-nav">
-        <li><a href="#">Início</a></li>
+        <li><a href="{% url 'pagina_motorista' %}">Início</a></li>
         <li><a href="#">Perfil</a></li>
         <li><a href="#">Histórico de corridas</a></li> 
-        <li><a href="{% url 'pagina_motorista' %}">Alterar para motorista</a></li>
+        <li><a href="{% url 'pagina_passageiro' %}">Alterar para passageiro</a></li>
+        <li><a href="#">Ver meus carros</a></li>
+        <li><a href="{% url 'car_create' %}">Criar veículo</a></li>
       </ul>
       <a href="{% url 'logout' %}" style="margin-top: auto; color: inherit;
       text-decoration: none;">
@@ -232,7 +254,19 @@
       </svg>
     </button>
     <div class="content">
-      <!-- Conteúdo da página -->
+      <div class="car-list">
+        {% if cars %}
+          {% for car in cars %}
+            <div class="car-item">
+              <h3>{{ car.brand }} {{ car.model }}</h3>
+              <p><strong>Placa:</strong> {{ car.plate }}</p>
+                <p><strong>Observações:</strong> {% if car.observations %}{{ car.observations }}{% else %}Nenhuma{% endif %}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>Você ainda não cadastrou nenhum carro.</p>
+        {% endif %}
+      </div>
     </div>
     <script>
       const menuToggle = document.querySelector('.menu-toggle');
