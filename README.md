@@ -61,3 +61,5 @@ https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 
 ## 5) Quadro da Sprint 1:
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/f0264a43-e8b0-406b-a79a-ffc5957f235d)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/cca54048-126d-4f90-af36-f539f8b74853)
+
