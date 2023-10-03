@@ -42,7 +42,9 @@ Gabriel Rodrigues Magalhães - grm@cesar.school
 ![(Diagrama de Atividades)](https://cdn.discordapp.com/attachments/1145786233935634483/1158548500884226168/Diagrama_em_branco_4.png?ex=651ca5df&is=651b545f&hm=bbee947dc82df5db88d6f2648b3f8c0a3c36be938207c36819b5a0e0525a04cb&)
 
 ## 2) Issue/BugTracker
-![Captura de tela 2023-10-02 233342](https://github.com/TheEuri/cesaride/assets/62456615/072cf549-c3ad-421d-b460-c5d6dadcd83e)
+![](https://github.com/TheEuri/cesaride/assets/132586951/e25d9d0e-e00d-44c4-9011-940b42598abd)
+![](https://github.com/TheEuri/cesaride/assets/132586951/717f4fa8-0fc9-4077-b73e-b4d810b0c76b)
+
 
 
 
