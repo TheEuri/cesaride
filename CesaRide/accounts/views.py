@@ -120,6 +120,11 @@ def car_create(request):
         form = CarForm()
     return render(request, 'car_create.html', {'form': form})
 
+def ride_create(request):
+        cars = Car.objects.filter(user=request.user)
+        context = {'cars': cars}
+        return render(request, 'create_ride.html', context)
+
 def car_list (request):
     username=request.user.username
     username = username.capitalize()

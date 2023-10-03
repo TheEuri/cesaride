@@ -214,6 +214,26 @@
         margin-left: 0;
       }
     }
+
+    .create-race {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.btn-green {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;;
+}
+
+.btn-green:hover {
+  background-color: #3e8e41;
+}
   </style>
 </head>
   <body>
@@ -255,7 +275,9 @@
       </svg>
     </button>
     <div class="content">
-      
+      <div class="create-race">
+        <a href="{% url 'ride_create' %}" class="btn-green">Criar corrida</a>
+      </div>
     </div>
     <script>
       const menuToggle = document.querySelector('.menu-toggle');
