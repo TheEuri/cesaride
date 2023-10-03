@@ -33,3 +33,25 @@ Gabriel Rodrigues Magalhães - grm@cesar.school
 ## 2) Protótipo de Lo-Fi
 ### 2.1) [Sketches e Storyboards](https://www.figma.com/file/Q16rMUsrIwxwDSviLcspFJ/Untitled?type=design&node-id=0%3A1&mode=design&t=VcpbQQzVQNpfaoXH-1)
 ### 2.2) [ScreenCast](https://drive.google.com/file/d/1WpkxE7l7srGx4rpUwu9uf-Srxe_NVIsM/view?usp=sharing)
+
+
+
+# Entrega 2
+
+## 1) Diagrama de Atividades
+![(Diagrama de Atividades)](https://cdn.discordapp.com/attachments/1145786233935634483/1158548500884226168/Diagrama_em_branco_4.png?ex=651ca5df&is=651b545f&hm=bbee947dc82df5db88d6f2648b3f8c0a3c36be938207c36819b5a0e0525a04cb&)
+
+## 2) Issue/BugTracker
+(colar print aqui)
+
+## 3) Deployment das Histórias em produção
+### 3.1) Link (colar aqui)
+### 3.2) Instruções de acesso:
+  Para começar a usar a nossa aplicação, o primeiro passo é realizar o cadastro. Se ainda não possui uma conta, basta fornecer as informações solicitadas. Depois, só precisa escolher se deseja usar como motorista ou passageiro. Já cadastrado, você terá acesso à página principal, onde serão publicadas as corridas disponíveis. Além disso, você poderá alternar entre as funções de passageiro e motorista sem precisar fazer logout, dessa maneira fica mais fácil e prático aproveitar o aplicativo
+### 3.3) Screencast do uso do sistema:
+(colar aqui)
+
+## 4) Pair Programming:
+(escrever aqui - Pedrinho)
+
+## 5) Quadro da Sprint 1:

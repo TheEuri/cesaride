@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CesaRide - Cadastrar Carro</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-9dJz9w5JZ1j5JZv6y5v5zvZzQzv8zvJ5z7GJ6sJQ7y8zJ7tZz7JzvZzvJ5zvZzQzv8zvJ5z7GJ6sJQ7y8zJ7tZz7JzvZzQzv8zvJ5zvZzQzv8zvJ5z7GJ6sJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: #080710;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+      label {
+        font-weight: semi-bold;
+        margin-bottom: 5px;
+        color: #fff;
+      }
+      input[type="text"],
+      textarea {
+        background-color: #18152c;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+
+      h1 {
+        color: #fff;
+      }
+      .error {
+        border-color: red;
+      }
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+      button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      @media (max-width: 600px) {
+        input[type="text"],
+        textarea {
+          width: 100%;
+        }
+      }
+      .back-button {
+        display: flex;
+        width: min-content;
+        padding: 5px 10px;
+        background-color: #18152c;
+        color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px;
+      }
+
+      .back-button svg {
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+
+      .back-button:hover {
+        background-color: #201c39;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#" onclick="history.back(); return false;" class="back-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+        />
+      </svg>
+
+      Voltar
+    </a>
+    <div class="container">
+      <h1>Cadastrar Carro</h1>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group{% if form.brand.errors %} error{% endif %}">
+          <label for="id_brand">Marca:</label>
+          <input
+            type="text"
+            id="id_brand"
+            name="brand"
+            value="{% if form.brand.value is not None %} {{ form.brand.value }} {% endif %}"
+          />
+          {% for error in form.brand.errors %}
+          <span class="error-message">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="form-group{% if form.model.errors %} error{% endif %}">
+          <label for="id_model">Modelo:</label>
+          <input
+            type="text"
+            id="id_model"
+            name="model"
+            value="{% if form.model.value is not None %} {{ form.model.value }} {% endif %}"
+
+          />
+          {% for error in form.model.errors %}
+          <span class="error-message">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="form-group{% if form.plate.errors %} error{% endif %}">
+          <label for="id_plate">Placa:</label>
+          <input
+            type="text"
+            id="id_plate"
+            name="plate"
+            value="{% if form.plate.value is not None %} {{ form.plate.value }} {% endif %}"
+
+          />
+          {% for error in form.plate.errors %}
+          <span class="error-message">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div
+          class="form-group{% if form.observations.errors %} error{% endif %}"
+        >
+          <label for="id_observations">Observações:</label>
+          <textarea id="id_observations" name="observations">{% if form.observations.value is not None %}{{ form.observations.value }}{% endif %}</textarea
+          >
+          {% for error in form.observations.errors %}
+          <span class="error-message">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </body>
+</html>
