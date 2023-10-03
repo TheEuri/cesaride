@@ -27,4 +27,6 @@ urlpatterns = [
     path('logout/', views.LogoutPage, name='logout'),
     path('passanger_home/',views.passenger_home,name='pagina_passageiro'),
     path('driver_home', views.driver_home, name='pagina_motorista'),
+    path('driver/cars/create/', views.car_create, name='car_create'),
+
 ]

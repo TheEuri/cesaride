@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 from django import forms
 
 # Create your models here.
@@ -34,3 +35,10 @@ class LoginForm (forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
     role = forms.ChoiceField(choices=CustomUser.ROLE_CHOICES)
+
+class Car(models.Model):
+    brand = models.CharField(max_length=50)
+    model = models.CharField(max_length=50)
+    plate = models.CharField(max_length=7)
+    observations = models.TextField(blank=True, null=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

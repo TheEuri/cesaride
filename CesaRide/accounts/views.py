@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from . forms import CustomUserCreationForm,LoginForm
+from . forms import CustomUserCreationForm,LoginForm, CarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
+from .models import Car
 
 # Create your views here.
 
@@ -105,5 +106,17 @@ def choose_role(request):
         form = LoginForm()
     return render (request, 'registro/choose_role.html', {'form':form})
 
+def car_create(request):
+    if request.method == 'POST':
+        form = CarForm(request.POST)
+        if form.is_valid():
+            # Salvar o carro e redirecionar para a página de detalhes
+            car = form.save(commit=False)
+            car.user= request.user
+            car.save()
+            return redirect('pagina_motorista')
+    else:
+        form = CarForm()
+    return render(request, 'car_create.html', {'form': form})
 
 
