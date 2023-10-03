@@ -52,6 +52,6 @@ Gabriel Rodrigues Magalhães - grm@cesar.school
 (colar aqui)
 
 ## 4) Pair Programming:
-(escrever aqui - Pedrinho)
+  Nós decidimos nos dividir em dois trios. Dos 6 integrantes, consideramos 2 com mais experiência e separamos um para cada trio.
 
 ## 5) Quadro da Sprint 1:
