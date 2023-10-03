@@ -52,9 +52,10 @@ Gabriel Rodrigues Magalhães - grm@cesar.school
 ### 3.2) Instruções de acesso:
   Para começar a usar a nossa aplicação, o primeiro passo é realizar o cadastro. Se ainda não possui uma conta, basta fornecer as informações solicitadas. Depois, só precisa escolher se deseja usar como motorista ou passageiro. Já cadastrado, você terá acesso à página principal, onde serão publicadas as corridas disponíveis. Além disso, você poderá alternar entre as funções de passageiro e motorista sem precisar fazer logout, dessa maneira fica mais fácil e prático aproveitar o aplicativo
 ### 3.3) Screencast do uso do sistema:
-[https://bit.ly/VideoFDSCesaride](https://bit.ly/VideoFDSCesaride)
+https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 
 ## 4) Pair Programming:
   A implementação do pair programming trouxe à nossa equipe uma experiência altamente benéfica, resultando em um notável progresso no nosso aprendizado e desenvolvimento conjunto. Ao trabalharmos em dois trios, identificamos duas pessoas mais experientes e optamos por distribuí-las em cada grupo, visando aproveitar ao máximo seus conhecimentos, o que enriqueceu nossa capacidade de aprendizado e fortaleceu ainda mais a coesão da equipe. Essa abordagem em trios, com a orientação desses membros experientes, possibilitou a criação de código de alta qualidade, mais limpo e eficiente, aprimorando nosso conhecimento mútuo e tornando nosso processo de desenvolvimento mais eficaz. A capacidade de oferecer suporte mútuo ao longo do processo se mostrou inestimável, e ao dividirmos as tarefas em grupos, pudemos explorar e compartilhar nossas especialidades, tornando a equipe mais diversificada e melhor preparada para enfrentar uma ampla gama de desafios. Em resumo, a fluidez desse método facilitou grandemente nossa capacidade de cumprir prazos e entregas, contribuindo para o sucesso de nossa segunda entrega, além de aprimorar não apenas a qualidade do código, mas também nossa colaboração e eficiência como equipe de desenvolvimento.
 
 ## 5) Quadro da Sprint 1:
+![image](https://github.com/TheEuri/cesaride/assets/132586951/f0264a43-e8b0-406b-a79a-ffc5957f235d)
