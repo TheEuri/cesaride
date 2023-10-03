@@ -45,7 +45,8 @@ Gabriel Rodrigues Magalhães - grm@cesar.school
 (colar print aqui)
 
 ## 3) Deployment das Histórias em produção
-### 3.1) Link (colar aqui)
+### 3.1) Link 
+[https://cesaride.azurewebsites.net/](https://cesaride.azurewebsites.net/)
 ### 3.2) Instruções de acesso:
   Para começar a usar a nossa aplicação, o primeiro passo é realizar o cadastro. Se ainda não possui uma conta, basta fornecer as informações solicitadas. Depois, só precisa escolher se deseja usar como motorista ou passageiro. Já cadastrado, você terá acesso à página principal, onde serão publicadas as corridas disponíveis. Além disso, você poderá alternar entre as funções de passageiro e motorista sem precisar fazer logout, dessa maneira fica mais fácil e prático aproveitar o aplicativo
 ### 3.3) Screencast do uso do sistema:
