@@ -59,7 +59,31 @@ https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 ## 4) Pair Programming:
   A implementação do pair programming trouxe à nossa equipe uma experiência altamente benéfica, resultando em um notável progresso no nosso aprendizado e desenvolvimento conjunto. Ao trabalharmos em dois trios, identificamos duas pessoas mais experientes e optamos por distribuí-las em cada grupo, visando aproveitar ao máximo seus conhecimentos, o que enriqueceu nossa capacidade de aprendizado e fortaleceu ainda mais a coesão da equipe. Essa abordagem em trios, com a orientação desses membros experientes, possibilitou a criação de código de alta qualidade, mais limpo e eficiente, aprimorando nosso conhecimento mútuo e tornando nosso processo de desenvolvimento mais eficaz. A capacidade de oferecer suporte mútuo ao longo do processo se mostrou inestimável, e ao dividirmos as tarefas em grupos, pudemos explorar e compartilhar nossas especialidades, tornando a equipe mais diversificada e melhor preparada para enfrentar uma ampla gama de desafios. Em resumo, a fluidez desse método facilitou grandemente nossa capacidade de cumprir prazos e entregas, contribuindo para o sucesso de nossa segunda entrega, além de aprimorar não apenas a qualidade do código, mas também nossa colaboração e eficiência como equipe de desenvolvimento.
 
+
 ## 5) Quadro da Sprint 1:
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/f0264a43-e8b0-406b-a79a-ffc5957f235d)
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/cca54048-126d-4f90-af36-f539f8b74853)
 
+
+# Entrega 3:
+
+## 1) Quadro da Sprint 2:
+![image](https://github.com/TheEuri/cesaride/assets/132586951/eccb962b-b9ec-454d-b1c5-e422cdfb3e93)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/16e2d575-3438-47f0-8eb4-140a0f669e83)
+
+## 2) Diagrama de Atividades atualizado:
+colar link aqui
+
+## 3) Screencast com ênfase nas novas histórias:
+colar link aqui
+
+## 4) Issue / Bug Tracker
+colar print aqui
+
+## 5) CI / CD com build e deployment atualizado
+colar screencast do processo de build e deployment
+
+## 6) Testes de Sistemas (E2E) Automatizados:
+colar screencast da execução dos testes 
+
+## 7) Atualização Sobre o Pair Programming
