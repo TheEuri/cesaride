@@ -28,6 +28,9 @@ class CustomUser(AbstractUser):
         default=PASSENGER,
     )
 
+    
+    
+
 class LoginForm (forms.Form):
     username = forms.CharField()
 

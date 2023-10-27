@@ -233,6 +233,20 @@
     color: rgba(255, 255, 255, 0.5);
     font-weight: 600;
   }
+  .accept-ride-button{
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: rgb(50, 247, 50);
+  padding: 10px;
+    text-decoration: none;
+}
+.accept-ride-button :hover{
+  background-color: rgb(1, 95, 1);
+  color: #fff;
+  transition: 0.5s;
+}
+  
     </style>
   </head>
     <body>
@@ -286,13 +300,18 @@
                 <p><strong>Observações do carro:</strong> {{ride.car.observations}}</p>
                 <p><strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}</p>
                 <p><strong>Observações:</strong> {% if ride.observations %}{{ ride.observations }}{% else %}Nenhuma{% endif %}</p>
-                    <p><strong>Passageiros:</strong></p>
+                
+                    <p><strong>Passageiros:</strong></p><p><strong>
                 <ul>
                     {% for passenger in ride.passengers.all %}
                         <li>{{ passenger.username }}</li>
                     {% endfor %}
                 </ul>
-
+                <div>
+                  <a href="{% url 'pagina_passageiro' %}" class="accept-ride-button">
+                    Voltar
+                  </a>                
+                </div>
 
                 <div>              
                 </div>

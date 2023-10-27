@@ -233,7 +233,7 @@ strong {
   color: rgba(255, 255, 255, 0.5);
   font-weight: 600;}
 
-.ride-list a{
+.accept-ride-button{
   margin-top: 20px;
   display: inline-block;
   border-radius: 10px;
@@ -241,10 +241,26 @@ strong {
   padding: 10px;
     text-decoration: none;
 }
-.ride-list a:hover{
+.accept-ride-button :hover{
   background-color: rgb(1, 95, 1);
   color: #fff;
   transition: 0.5s;
+}
+.no-ride{
+  display: flex;
+  background-color: #18152c;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+.full_ride {
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: rgb(101, 108, 110);
+    padding: 10px;
+    text-decoration: none;
 }
 
   </style>
@@ -302,16 +318,28 @@ strong {
               <p><strong>Observações do carro:</strong> {{ride.car.observations}}</p>
               <p><strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}</p>
               <p><strong>Observações:</strong> {% if ride.observations %}{{ ride.observations }}{% else %}Nenhuma{% endif %}</p>
+              <p><strong>Status:</strong> {% if not CustomUser.id in ride.custumuser_id  %}Aceito Papai!{% else %}{{CustomUser.id}}{% endif %}</p>
+             
+              {% if not ride.max_passengers == ride.available_seats %}
               <div>
                 <a href="{% url 'aceitar_corrida' ride.id %}" class="accept-ride-button">
-                  Solicitar Corrida
+                  Solicitar Participação
                 </a>                
               </div>
+              {% else %}
+              <div>
+                <a class="full_ride">
+                  Lotado
+                </a>                
+              </div>
+              {% endif %}
               
             </div>
           {% endfor %}
         {% else %}
+        <div class="no-ride">
           <p>Você não tem nenhuma corrida.</p>
+        </div>
         {% endif %}
       </div>
     </div>

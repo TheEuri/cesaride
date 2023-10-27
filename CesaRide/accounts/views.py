@@ -161,11 +161,14 @@ def aceitar_corrida(request, ride_id):
             ride.passageiros_aceitaram = True
             ride.passengers.add(request.user)
             ride.save()
+            
             return redirect('detalhes_corrida', ride_id=ride_id)
         else:
             return HttpResponse("Desculpe, esta corrida já atingiu o número máximo de passageiros.")
     else:
         return redirect('detalhes_corrida', ride_id=ride_id)
+    
+    
 
 def detalhes_corrida(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id)

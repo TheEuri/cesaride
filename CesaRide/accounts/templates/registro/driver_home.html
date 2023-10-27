@@ -271,6 +271,10 @@
   }
 }
 
+strong {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+}
 .no-ride{
   display: flex;
   background-color: #18152c;
@@ -280,14 +284,10 @@
   text-align: center;
 }
 
-strong {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 600;
-}
   </style>
 </head>
   <body>
-    <div class="sidebar" style="border-right: 3px solid rgba(0, 0, 0, 0.156)">
+    <div class="sidebar">
       <div class="menu-container">
         <button class="close-sidebar">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#fff">
@@ -309,6 +309,7 @@ strong {
         <li><a href="{% url 'pagina_passageiro' %}">Alterar para passageiro</a></li>
         <li><a href="{% url 'car_list' %}">Ver meus carros</a></li>
         <li><a href="{% url 'car_create' %}">Criar veículo</a></li>
+        
 
       </ul>
       <a href="{% url 'logout' %}" style="margin-top: auto; color: inherit;
@@ -346,7 +347,7 @@ strong {
           {% endfor %}
         {% else %}
         <div class="no-ride">
-          <p style="color: white;">Você não tem nenhuma corrida.</p>
+          <p>Você não tem nenhuma corrida.</p>
         </div>
         {% endif %}
       </div>
