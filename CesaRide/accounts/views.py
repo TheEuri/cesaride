@@ -78,9 +78,10 @@ def driver_home(request):
 
 
 def passenger_home(request):
-    username = request.user.username
-    username = username.capitalize()
-    return render(request, 'registro/passenger_home.html', {'username': username})
+  username = request.user.username
+  username = username.capitalize()
+  rides = Ride.objects.filter(status='active').exclude(driver=request.user)
+  return render(request, 'registro/passenger_home.html', {'username': username, 'rides': rides})
 
 
 def choose_role(request):
