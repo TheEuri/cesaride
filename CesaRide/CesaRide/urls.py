@@ -30,5 +30,8 @@ urlpatterns = [
     path('driver/cars/create/', views.car_create, name='car_create'),
     path('driver/cars/', views.car_list, name='car_list'),
     path('driver/create_ride', views.ride_create, name='ride_create'),
+    path('aceitar_corrida/<int:ride_id>/', views.aceitar_corrida, name='aceitar_corrida'),
+    path('detalhes_corrida/<int:ride_id>/', views.detalhes_corrida, name='detalhes_corrida'),
+
 
 ]

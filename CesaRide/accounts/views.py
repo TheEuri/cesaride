@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from . forms import CustomUserCreationForm, LoginForm, CarForm
@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from .models import Car, Ride
-
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -151,3 +152,23 @@ def car_list(request):
     username = username.capitalize()
     cars = Car.objects.filter(user=request.user)
     return render(request, 'car_list.html', {'username': username, 'cars': cars})
+
+def aceitar_corrida(request, ride_id):
+
+    ride = get_object_or_404(Ride, id=ride_id)
+
+    if not ride.accepted_by_passenger:
+        ride.passageiros_aceitaram = True
+        ride.passengers.add(request.user)
+        ride.save()
+        return redirect('detalhes_corrida', ride_id=ride_id)
+    if ride.passageiros_aceitaram:
+        return redirect('detalhes_corrida', ride_id=ride_id)
+    else:
+        pass
+
+def detalhes_corrida(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id)
+    
+    return render(request, 'detalhes.html', {'ride': ride})
+

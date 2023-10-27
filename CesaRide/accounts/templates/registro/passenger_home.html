@@ -231,8 +231,22 @@
 
 strong {
   color: rgba(255, 255, 255, 0.5);
-  font-weight: 600;
+  font-weight: 600;}
+
+.ride-list a{
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: rgb(50, 247, 50);
+  padding: 10px;
+    text-decoration: none;
 }
+.ride-list a:hover{
+  background-color: rgb(1, 95, 1);
+  color: #fff;
+  transition: 0.5s;
+}
+
   </style>
 </head>
   <body>
@@ -271,7 +285,7 @@ strong {
       </svg>
     </button>
     <div class="content" style="margin-top: 20px;">
-      <h1 style="color: #fff; margin-top: -15px;">Suas corridas ativas</h1>
+      <h1 style="color: #fff; margin-top: -15px;">Faça uma viagem</h1>
       <div class="ride-list">
         {% if rides %}
           {% for ride in rides %}
@@ -288,6 +302,12 @@ strong {
               <p><strong>Observações do carro:</strong> {{ride.car.observations}}</p>
               <p><strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}</p>
               <p><strong>Observações:</strong> {% if ride.observations %}{{ ride.observations }}{% else %}Nenhuma{% endif %}</p>
+              <div>
+                <a href="{% url 'aceitar_corrida' ride.id %}" class="accept-ride-button">
+                  Solicitar Corrida
+                </a>                
+              </div>
+              
             </div>
           {% endfor %}
         {% else %}
