@@ -115,6 +115,27 @@
       color: #fff;
     }
 
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #18152c;
+      color: #fff;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #18152c;
+      color: #fff;
+      width: calc(100vw - 50px);
+      max-width: 500px;
+
+    }
+
     h2 {
       color: #fff;
 
@@ -178,16 +199,23 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="neighborhood">Bairros onde deseja passar:</label>
-          <textarea id="neighborhood" name="neighborhood" class="form-control" rows="3"></textarea>
+          <label for="init-address">Endereço inicial:</label>
+          <input id="init-address" name="init-address" class="form-control" rows="3"></input>
+        </div>
+        <div class="form-group">
+          <label for="final-address">Endereço final:</label>
+          <input id="final-address" name="final-address" class="form-control" rows="3"></input>
         </div>
         <div class="form-group">
           <label for="price">Preço por passageiro:</label>
-          <input id="price" name="price" class="form-control">
+          <div class="" style="width: 100%; background-color: #2d284d; display: flex; flex-direction: row; align-items: center; border-radius: 5px; ">
+          <span style="padding: 6px 10px 6px 10px; color: #fff;">R$</span>
+          <input id="price" type="number" class="form-control" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; ">
+        </div>
         </div>
         <div class="form-group">
           <label for="passengers">Número de passageiros:</label>
-          <input type="number" id="passengers" name="passengers" min="1" max="4">
+          <input type="number" id="passengers" name="passengers" min="1">
         </div>
         <div class="form-group">
           <label for="time">Hora:</label>
