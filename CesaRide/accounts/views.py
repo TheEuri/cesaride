@@ -73,7 +73,7 @@ def driver_home(request):
     username = request.user.username
     username = username.capitalize()
     cars = Car.objects.filter(user=request.user)
-    rides = Ride.objects.filter(driver=request.user)
+    rides = Ride.objects.filter(driver=request.user, status='active')
     return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars, 'rides': rides})
 
 
