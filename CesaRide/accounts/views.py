@@ -73,7 +73,8 @@ def driver_home(request):
     username = request.user.username
     username = username.capitalize()
     cars = Car.objects.filter(user=request.user)
-    return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars})
+    rides = Ride.objects.filter(driver=request.user)
+    return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars, 'rides': rides})
 
 
 def passenger_home(request):
@@ -131,7 +132,7 @@ def ride_create(request):
 
         if car and max_passengers and time and origin and destination and passenger_price and float(passenger_price) < 999.00 and float(passenger_price) > 0:
             ride = Ride.objects.create(driver=request.user, max_passengers=max_passengers, time=time, origin=origin,
-                                       destination=destination, observations=observations, passenger_price=passenger_price)
+                                       destination=destination, observations=observations, passenger_price=passenger_price, car=Car.objects.get(id=car))
             ride.save()
 
             print(ride)

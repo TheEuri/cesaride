@@ -46,6 +46,7 @@ class Car(models.Model):
 class Ride(models.Model):
     driver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='driver')
     passengers = models.ManyToManyField(CustomUser, related_name='passengers')
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='car' )
     max_passengers = models.IntegerField()
     time = models.TimeField()
     origin = models.CharField(max_length=100)
