@@ -189,7 +189,8 @@
   <div class="content">
     <div class="create-race">
       <h2>Criar corrida</h2>
-      <form>
+      <form  method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label for="car">Selecione o carro:</label>
           <select id="car" name="car">
@@ -199,19 +200,19 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="init-address">Endereço inicial:</label>
-          <input id="init-address" name="init-address" class="form-control" rows="3"></input>
+          <label for="origin">Endereço inicial:</label>
+          <input id="origin" name="origin" class="form-control" rows="3"></input>
         </div>
         <div class="form-group">
-          <label for="final-address">Endereço final:</label>
-          <input id="final-address" name="final-address" class="form-control" rows="3"></input>
+          <label for="destination">Endereço final:</label>
+          <input id="destination" name="destination" class="form-control" rows="3"></input>
         </div>
         <div class="form-group">
-          <label for="price">Preço por passageiro:</label>
+          <label for="price">Preço por passageiro: (Max: 999,99)</label>
           <div class="" style="width: 100%; background-color: #2d284d; display: flex; flex-direction: row; align-items: center; border-radius: 5px; ">
-          <span style="padding: 6px 10px 6px 10px; color: #fff;">R$</span>
-          <input id="price" type="number" class="form-control" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; ">
-        </div>
+            <span style="padding: 6px 10px 6px 10px; color: #fff;">R$</span>
+            <input  type="number" id="price" min="0" step=".01" maxlength="5" name="price" class="form-control" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; ">
+          </div>
         </div>
         <div class="form-group">
           <label for="passengers">Número de passageiros:</label>

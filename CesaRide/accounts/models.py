@@ -42,3 +42,13 @@ class Car(models.Model):
     plate = models.CharField(max_length=7)
     observations = models.TextField(blank=True, null=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+class Ride(models.Model):
+    driver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='driver')
+    passengers = models.ManyToManyField(CustomUser, related_name='passengers')
+    max_passengers = models.IntegerField()
+    time = models.TimeField()
+    origin = models.CharField(max_length=100)
+    destination = models.CharField(max_length=100)
+    observations = models.TextField(blank=True, null=True)
+    passenger_price = models.DecimalField(max_digits=5, decimal_places=2)
