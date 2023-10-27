@@ -11,7 +11,4 @@ urlpatterns = [
     path('choose_role/', views.choose_role, name='choose_role'),
     path('aceitar_corrida/<int:ride_id>/', views.aceitar_corrida, name='aceitar_corrida'),
     path('detalhes_corrida/<int:ride_id>/', views.detalhes_corrida, name='detalhes_corrida'),
-    path('aceitar_solicitacao/<int:request_id>/', views.aceitar_solicitacao, name='aceitar_solicitacao'),
-    path('recusar_solicitacao/<int:request_id>/', views.recusar_solicitacao, name='recusar_solicitacao'),
-    path('solicitacoes_pendentes/', views.solicitacoes_pendentes, name='solicitacoes_pendentes'),
 ]

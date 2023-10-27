@@ -58,3 +58,4 @@ class Ride(models.Model):
     
     def __str__(self):
         return f'Ride from {self.origin} to {self.destination}'
+    

@@ -154,21 +154,22 @@ def car_list(request):
     return render(request, 'car_list.html', {'username': username, 'cars': cars})
 
 def aceitar_corrida(request, ride_id):
-
     ride = get_object_or_404(Ride, id=ride_id)
-
+    
     if not ride.accepted_by_passenger:
-        ride.passageiros_aceitaram = True
-        ride.passengers.add(request.user)
-        ride.save()
-        return redirect('detalhes_corrida', ride_id=ride_id)
-    if ride.passageiros_aceitaram:
-        return redirect('detalhes_corrida', ride_id=ride_id)
+        if ride.passengers.count() < ride.max_passengers:
+            ride.passageiros_aceitaram = True
+            ride.passengers.add(request.user)
+            ride.save()
+            return redirect('detalhes_corrida', ride_id=ride_id)
+        else:
+            return HttpResponse("Desculpe, esta corrida já atingiu o número máximo de passageiros.")
     else:
-        pass
+        return redirect('detalhes_corrida', ride_id=ride_id)
 
 def detalhes_corrida(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id)
-    
-    return render(request, 'detalhes.html', {'ride': ride})
+    username = request.user.username
+    username = username.capitalize()
+    return render(request, 'detalhes.html', {'username': username, 'ride': ride})
 
