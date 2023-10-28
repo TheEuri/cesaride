@@ -145,7 +145,6 @@
 
     /* Estilos do conteúdo */
     .content {
-      margin-left: 200px;
       padding: 20px;
     }
     .menu-toggle.hide {
@@ -228,11 +227,53 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  text-decoration: none;;
+  text-decoration: none;
+
 }
 
 .btn-green:hover {
   background-color: #3e8e41;
+}
+
+.ride-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ride-item {
+  background-color: #18152c;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.ride-item h3 {
+  margin-top: 0;
+}
+
+.ride-item p {
+  margin: 0;
+}
+
+.ride-item strong {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .ride-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .ride-item {
+    width: calc(50% - 10px);
+  }
+}
+
+strong {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
 }
   </style>
 </head>
@@ -277,6 +318,26 @@
     <div class="content">
       <div class="create-race">
         <a href="{% url 'ride_create' %}" class="btn-green">Criar corrida</a>
+      </div>
+      <br class="">
+        <h1 style="color: #fff; margin-top: -15px;">Suas corridas ativas</h1>
+      <div class="ride-list">
+        {% if rides %}
+          {% for ride in rides %}
+            <div class="ride-item">
+              <h3 style="margin: 0;"><strong>Horário:</strong> {{ ride.time }}</h3>
+              <h3 style="margin: 0;"><strong>De:</strong> {{ ride.origin }}</h3>
+              <h3><strong>Para:</strong> {{ ride.destination }}</h3>
+              <p><strong>Passageiros:</strong> {{ ride.passengers.count }}/{{ ride.max_passengers }}</p>
+              <p><strong>Carro:</strong> {{ ride.car.brand }} {{  ride.car.model  }}</p>
+              <p><strong>Placa:</strong> {{ ride.car.plate }}</p>
+              <p><strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}</p>
+              <p><strong>Observações:</strong> {% if ride.observations %}{{ ride.observations }}{% else %}Nenhuma{% endif %}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>Você não tem nenhuma corrida.</p>
+        {% endif %}
       </div>
     </div>
     <script>

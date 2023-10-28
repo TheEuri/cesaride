@@ -115,6 +115,27 @@
       color: #fff;
     }
 
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #18152c;
+      color: #fff;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #18152c;
+      color: #fff;
+      width: calc(100vw - 50px);
+      max-width: 500px;
+
+    }
+
     h2 {
       color: #fff;
 
@@ -168,7 +189,8 @@
   <div class="content">
     <div class="create-race">
       <h2>Criar corrida</h2>
-      <form>
+      <form  method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label for="car">Selecione o carro:</label>
           <select id="car" name="car">
@@ -176,6 +198,33 @@
               <option value="{{ car.id }}">{{ car.brand }} {{ car.model }} ({{ car.plate }})</option>
             {% endfor %}
           </select>
+        </div>
+        <div class="form-group">
+          <label for="origin">Endereço inicial:</label>
+          <input id="origin" name="origin" class="form-control" rows="3"></input>
+        </div>
+        <div class="form-group">
+          <label for="destination">Endereço final:</label>
+          <input id="destination" name="destination" class="form-control" rows="3"></input>
+        </div>
+        <div class="form-group">
+          <label for="price">Preço por passageiro: (Max: 999,99)</label>
+          <div class="" style="width: 100%; background-color: #2d284d; display: flex; flex-direction: row; align-items: center; border-radius: 5px; ">
+            <span style="padding: 6px 10px 6px 10px; color: #fff;">R$</span>
+            <input  type="number" id="price" min="0" step=".01" maxlength="5" name="price" class="form-control" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; ">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="passengers">Número de passageiros:</label>
+          <input type="number" id="passengers" name="passengers" min="1">
+        </div>
+        <div class="form-group">
+          <label for="time">Hora:</label>
+          <input type="time" id="time" name="time">
+        </div>
+        <div class="form-group">
+          <label for="observations">Observações:</label>
+          <textarea id="observations" name="observations" class="form-control" rows="3"></textarea>
         </div>
         <button class="btn-green">Criar corrida</button>
       </form>
