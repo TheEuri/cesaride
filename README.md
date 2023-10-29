@@ -74,7 +74,7 @@ https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 ## 2) Diagrama de Atividades atualizado:
 colar link aqui
 
-## 3) Screencast com ênfase nas novas histórias:
+## 3) Screencast do Lo-Fi com ênfase nas novas histórias:
 colar link aqui
 
 ## 4) Issue / Bug Tracker
