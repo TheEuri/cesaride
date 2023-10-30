@@ -275,6 +275,15 @@ strong {
   color: rgba(255, 255, 255, 0.5);
   font-weight: 600;
 }
+.no-ride{
+  display: flex;
+  background-color: #18152c;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
   </style>
 </head>
   <body>
@@ -300,6 +309,7 @@ strong {
         <li><a href="{% url 'pagina_passageiro' %}">Alterar para passageiro</a></li>
         <li><a href="{% url 'car_list' %}">Ver meus carros</a></li>
         <li><a href="{% url 'car_create' %}">Criar veículo</a></li>
+        
 
       </ul>
       <a href="{% url 'logout' %}" style="margin-top: auto; color: inherit;
@@ -317,7 +327,7 @@ strong {
     </button>
     <div class="content">
       <div class="create-race">
-        <a href="{% url 'ride_create' %}" class="btn-green">Criar corrida</a>
+        <a href="{% url 'ride_create' %}" id="btn-create-ride" class="btn-green">Criar corrida</a>
       </div>
       <br class="">
         <h1 style="color: #fff; margin-top: -15px;">Suas corridas ativas</h1>
@@ -336,7 +346,9 @@ strong {
             </div>
           {% endfor %}
         {% else %}
+        <div class="no-ride">
           <p>Você não tem nenhuma corrida.</p>
+        </div>
         {% endif %}
       </div>
     </div>

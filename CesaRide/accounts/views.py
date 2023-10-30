@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from . forms import CustomUserCreationForm, LoginForm, CarForm
@@ -6,9 +6,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from .models import Car, Ride
-
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
+
 
 @login_required(login_url='login')
 def HomePage(request):
@@ -78,10 +80,10 @@ def driver_home(request):
 
 
 def passenger_home(request):
-  username = request.user.username
-  username = username.capitalize()
-  rides = Ride.objects.filter(status='active').exclude(driver=request.user)
-  return render(request, 'registro/passenger_home.html', {'username': username, 'rides': rides})
+    username = request.user.username
+    username = username.capitalize()
+    rides = Ride.objects.filter(status='active').exclude(driver=request.user)
+    return render(request, 'registro/passenger_home.html', {'username': username, 'rides': rides})
 
 
 def choose_role(request):
@@ -129,7 +131,8 @@ def ride_create(request):
         observations = request.POST.get('observations')
         passenger_price = request.POST.get('price')
 
-        print(car, max_passengers, time, origin, destination, observations, passenger_price)
+        print(car, max_passengers, time, origin,
+              destination, observations, passenger_price)
 
         if car and max_passengers and time and origin and destination and passenger_price and float(passenger_price) < 999.00 and float(passenger_price) > 0:
             ride = Ride.objects.create(driver=request.user, max_passengers=max_passengers, time=time, origin=origin,
@@ -138,7 +141,7 @@ def ride_create(request):
 
             print(ride)
             return redirect('pagina_motorista')
-        else:    
+        else:
             return HttpResponse("Preencha todos os campos corretamente!")
     else:
         cars = Car.objects.filter(user=request.user)
@@ -151,3 +154,21 @@ def car_list(request):
     username = username.capitalize()
     cars = Car.objects.filter(user=request.user)
     return render(request, 'car_list.html', {'username': username, 'cars': cars})
+
+
+def aceitar_corrida(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id)
+    if ride.passengers.count() < ride.max_passengers:
+        ride.passengers.add(request.user)
+        ride.save()
+
+        return redirect('detalhes_corrida', ride_id=ride_id)
+    else:
+        return HttpResponse("Desculpe, esta corrida já atingiu o número máximo de passageiros.")
+
+
+def detalhes_corrida(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id)
+    username = request.user.username
+    username = username.capitalize()
+    return render(request, 'detalhes.html', {'username': username, 'ride': ride})
