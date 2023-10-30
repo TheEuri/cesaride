@@ -29,6 +29,7 @@ def signup(request):
         email = request.POST.get('email')
         pass1 = request.POST.get('password1')
         pass2 = request.POST.get('password2')
+        phone_number = request.POST.get('phone_number')
 
         if User.objects.filter(username=username):
             return HttpResponse("Usuário já existe! Por favor, tentre outro nome")
@@ -46,7 +47,7 @@ def signup(request):
             return HttpResponse("Sua senha e confirmação de senha não são iguais!")
         else:
 
-            my_user = User.objects.create_user(username, email, pass1)
+            my_user = User.objects.create_user(username=username, email=email, password=pass1, phone_number=phone_number)
             my_user.save()
             return redirect('login')
 
