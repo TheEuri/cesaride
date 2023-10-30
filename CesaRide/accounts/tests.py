@@ -99,4 +99,10 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         browser.find_element(By.ID, 'submit').click()
         time.sleep(5)
+        browser.find_element(By.ID, "menu-toggle").click()
+        time.sleep(1)
+        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
+        time.sleep(0.5)
+        browser.close()
 
