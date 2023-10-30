@@ -5,7 +5,7 @@ from . forms import CustomUserCreationForm, LoginForm, CarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-from .models import Car, Ride
+from .models import Car, Ride, RequestParticipationInRide
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -66,9 +66,11 @@ def signin(request):
             return HttpResponse("Nome de Usuário ou Senha incorretos!")
     return render(request, 'registro/signin.html')
 
+
 def LogoutPage(request):
     logout(request)
     return redirect('login')
+
 
 @login_required(login_url='login')
 def driver_home(request):
@@ -81,10 +83,20 @@ def driver_home(request):
 
 @login_required(login_url='login')
 def passenger_home(request):
-    username = request.user.username
-    username = username.capitalize()
-    rides = Ride.objects.filter(status='active').exclude(driver=request.user)
-    return render(request, 'registro/passenger_home.html', {'username': username, 'rides': rides})
+  username = request.user.username
+  username = username.capitalize()
+  rides = Ride.objects.filter(status='active').exclude(driver=request.user).order_by('time')
+  requests = RequestParticipationInRide.objects.filter(passenger=request.user)
+  for ride in rides:
+    for requestPart in requests:
+      if ride.id == requestPart.ride.id:
+        ride.requestStatus = requestPart.status
+
+        print(ride)
+        break
+
+    
+  return render(request, 'registro/passenger_home.html', {'username': username, 'rides': rides})
 
 
 @login_required(login_url='login')
@@ -161,21 +173,89 @@ def car_list(request):
     return render(request, 'car_list.html', {'username': username, 'cars': cars})
 
 
+# @login_required(login_url='login')
+# def aceitar_corrida(request, ride_id):
+#     ride = get_object_or_404(Ride, id=ride_id)
+#     if ride.passengers.count() < ride.max_passengers:
+#         ride.passengers.add(request.user)
+#         ride.save()
+
+#         return redirect('detalhes_corrida', ride_id=ride_id)
+#     else:
+#         return HttpResponse("Desculpe, esta corrida já atingiu o número máximo de passageiros.")
+
 @login_required(login_url='login')
-def aceitar_corrida(request, ride_id):
+def request_participation_on_ride(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id)
-    if ride.passengers.count() < ride.max_passengers:
-        ride.passengers.add(request.user)
-        ride.save()
-
-        return redirect('detalhes_corrida', ride_id=ride_id)
-    else:
+    if request.method == 'POST':
+      if ride.passengers.count() >= ride.max_passengers:
         return HttpResponse("Desculpe, esta corrida já atingiu o número máximo de passageiros.")
-
+      else:
+        if (RequestParticipationInRide.objects.filter(ride=ride, passenger=request.user).exists()):
+          return HttpResponse("Você já solicitou participação nesta corrida!")
+        else:
+          origin = request.POST.get('origin')
+          destination = request.POST.get('destination')
+          if origin and destination:
+            request_participation = RequestParticipationInRide.objects.create(ride=ride, passenger=request.user, origin=origin, destination=destination)
+            request_participation.save()
+            return redirect('detalhes_corrida', ride_id=ride_id)
+          else:
+            return HttpResponse("Preencha todos os campos corretamente!")
+    else:
+      if (RequestParticipationInRide.objects.filter(ride=ride, passenger=request.user).exists()):
+          return redirect('detalhes_corrida', ride_id=ride_id)
+      else:
+        return render(request, 'request_ride.html', {'ride': ride})
 
 @login_required(login_url='login')
 def detalhes_corrida(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id)
+    requestStatus = RequestParticipationInRide.objects.filter(ride=ride, passenger=request.user)[0]
     username = request.user.username
     username = username.capitalize()
-    return render(request, 'detalhes.html', {'username': username, 'ride': ride})
+
+    return render(request, 'detalhes.html', {'username': username, 'ride': ride, 'requestStatus': requestStatus})
+
+@login_required(login_url='login')
+def driver_ride_details(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id)
+    username = request.user.username
+    username = username.capitalize()
+
+    requests = RequestParticipationInRide.objects.filter(ride=ride, status='pending')
+
+    return render(request, 'driver_ride_details.html', {'username': username, 'ride': ride, 'requests': requests})
+
+@login_required(login_url='login')
+def update_request(request, ride_id, request_id, status):
+    ride = get_object_or_404(Ride, id=ride_id, driver=request.user)
+    requestPart = get_object_or_404(RequestParticipationInRide, id=request_id, ride=ride)
+
+    if status == 1:
+      requestPart.status = 'accepted'
+      requestPart.save()
+      ride.passengers.add(requestPart.passenger)
+      ride.save()
+    elif status == 0:
+      requestPart.status = 'rejected'
+      requestPart.save()
+
+    return redirect('driver_ride_details', ride_id=ride_id)
+
+@login_required(login_url='login')
+def finish_ride(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id, driver=request.user)
+    ride.status = 'finished'
+    ride.save()
+    return redirect('driver_ride_details', ride_id=ride_id)
+
+@login_required(login_url='login')
+def ride_history(request):
+  username = request.user.username
+  username = username.capitalize()
+  rides = Ride.objects.filter(driver=request.user, status='finished')
+  passenger_rides = Ride.objects.filter(passengers=request.user, status='finished')
+
+  rides.union(passenger_rides)
+  return render(request, 'ride_history.html', {'username': username, 'rides': rides, 'passenger_rides': passenger_rides})

@@ -334,7 +334,9 @@ strong {
       <div class="ride-list">
         {% if rides %}
           {% for ride in rides %}
+          
             <div class="ride-item">
+              <a href="{% url 'driver_ride_details' ride.id %}" style="color:#FFF; text-decoration: none;">
               <h3 style="margin: 0;"><strong>Horário:</strong> {{ ride.time }}</h3>
               <h3 style="margin: 0;"><strong>De:</strong> {{ ride.origin }}</h3>
               <h3><strong>Para:</strong> {{ ride.destination }}</h3>
@@ -343,7 +345,9 @@ strong {
               <p><strong>Placa:</strong> {{ ride.car.plate }}</p>
               <p><strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}</p>
               <p><strong>Observações:</strong> {% if ride.observations %}{{ ride.observations }}{% else %}Nenhuma{% endif %}</p>
+            </a>
             </div>
+          
           {% endfor %}
         {% else %}
         <div class="no-ride">

@@ -53,3 +53,12 @@ class Ride(models.Model):
     observations = models.TextField(blank=True, null=True)
     passenger_price = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.CharField(default='active', max_length=14) 
+    
+class RequestParticipationInRide(models.Model):
+    ride = models.ForeignKey(Ride, on_delete=models.CASCADE)
+    passenger = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    status = models.CharField(default='pending', max_length=14)
+    origin = models.CharField(max_length=100)
+    destination = models.CharField(max_length=100)
+
+

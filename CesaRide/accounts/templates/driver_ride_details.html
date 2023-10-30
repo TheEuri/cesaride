@@ -234,17 +234,96 @@
     font-weight: 600;
   }
   .accept-ride-button{
-  margin-top: 20px;
+  margin-top: 10px;
   display: inline-block;
-  border-radius: 10px;
-  background-color: rgb(50, 247, 50);
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #FFF;
   padding: 10px;
     text-decoration: none;
 }
-.accept-ride-button :hover{
-  background-color: rgb(1, 95, 1);
+.accept-ride-button:hover{
+  background-color: #45a049;
+  color: #fff;
+}
+
+.request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.request-item {
+  background-color: #18152c;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.request-item h3 {
+  margin-top: 0;
+}
+
+.request-item p {
+  margin: 0;
+}
+
+.request-item strong {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .request-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .request-item {
+    width: calc(50% - 10px);
+  }
+}
+
+.accept-request-button, .decline-request-button {
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.accept-request-button {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.accept-request-button:hover {
+  background-color: #45a049;
   color: #fff;
   transition: 0.5s;
+}
+
+.decline-request-button {
+  color: #fff;
+background-color: #f44336; /* Red */
+}
+
+.decline-request-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+  color: #fff;
+}
+
+.finish-ride-button {
+  display: inline-block;
+  background-color: #f44336; /* Red */
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.finish-ride-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
 }
   
     </style>
@@ -300,7 +379,10 @@
                 <p><strong>Observações do carro:</strong> {{ride.car.observations}}</p>
                 <p><strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}</p>
                 <p><strong>Observações:</strong> {% if ride.observations %}{{ ride.observations }}{% else %}Nenhuma{% endif %}</p>
-                
+
+                <br>
+                <p><strong>Solicitações:</strong> {{requests.count}}</p>
+                <br>
                     <p><strong>Passageiros:</strong></p><p><strong>
                 <ul>
                     {% for passenger in ride.passengers.all %}
@@ -308,13 +390,14 @@
                     {% endfor %}
                 </ul>
 
-                {% if requestStatus %}
-                    <h3 style="margin:0">Status da sua solicitação de participação: <span style="color: #FFF;">{{requestStatus.status}}</span></h3>
-                {% endif %}
-                <div>
-                  <a href="{% url 'pagina_passageiro' %}" class="accept-ride-button">
+                <div style="display: flex; gap: 10px;">           
+                  <a href="{% url 'pagina_motorista' %}" class="accept-ride-button">
                     Voltar
-                  </a>                
+                  </a>        
+                  
+                  <a href="{% url 'finish_ride' ride.id %}" class="finish-ride-button">
+                    Finalizar Corrida
+                  </a> 
                 </div>
 
                 <div>              
@@ -322,6 +405,32 @@
                 
               </div>
         </div>
+
+        <h1 style="color: #fff;">Solicitações de Participação</h1>
+  <div class="request-list">
+    {% if requests %}
+      {% for request in requests %}
+        <div class="request-item">
+          <h3 style="margin: 0;"><strong>Origem:</strong> {{ request.origin }}</h3>
+          <h3 style="margin: 0;"><strong>Destino:</strong> {{ request.destination }}</h3>
+          <h3><strong>Passageiro:</strong> {{ request.passenger }}</h3>
+          <p><strong>Status:</strong> {{ request.status }}</p>
+
+          <div>
+            <a href="{% url 'update_request' ride.id request.id 1 %}" class="accept-request-button">
+              Aceitar
+            </a>                
+          </div>
+          <div>
+            <a href="{% url 'update_request' ride.id request.id 0 %}" class="decline-request-button">
+              Recusar
+            </a>                
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>Não há solicitações de participação no momento.</p>
+    {% endif %}
       </div>
       <script>
         const menuToggle = document.querySelector('.menu-toggle');

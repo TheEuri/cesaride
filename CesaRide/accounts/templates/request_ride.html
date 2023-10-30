@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CesaRide - Criar Corrida</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-9dJz9w5JZ1j5JZv6y5v5zvZzQzv8zvJ5z7GJ6sJQ7y8zJ7tZz7JzvZzvJ5zvZzQzv8zvJ5z7GJ6sJQ7y8zJ7tZz7JzvZzQzv8zvJ5zvZzQzv8zvJ5z7GJ6sJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: #080710;
+      }
+
+      .header {
+        background-color: rgba(255, 122, 0, 1);
+        color: #fff;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .header h1 {
+        margin: 0;
+      }
+
+      .sidebar {
+        background-color: #f2f2f2;
+        height: 100vh;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .sidebar li {
+        margin-bottom: 10px;
+      }
+
+      .sidebar a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      .sidebar-logout-btn {
+        background-color: #fff;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .sidebar-logout {
+        font-size: 16px;
+      }
+
+      .back-btn {
+        background-color: transparent;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+      }
+
+      .back-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .create-race {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      label {
+        margin-bottom: 5px;
+        color: #fff;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #18152c;
+        color: #fff;
+        width: calc(100vw - 50px);
+        max-width: 500px;
+      }
+
+      h2 {
+        color: #fff;
+      }
+
+      .btn-green {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .btn-green:hover {
+        background-color: #3e8e41;
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          position: fixed;
+          top: 0;
+          left: -200px;
+          transition: left 0.3s ease-in-out;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .content {
+          margin-top: 50px;
+        }
+
+        .sidebar.show {
+          left: 0;
+        }
+      }
+
+      .ride-item {
+        background-color: #18152c;
+        color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+      }
+
+      .ride-item h3 {
+        margin-top: 0;
+      }
+
+      .ride-item p {
+        margin: 0;
+      }
+
+      .ride-item strong {
+        font-weight: bold;
+      }
+
+      @media screen and (min-width: 768px) {
+
+        .ride-item {
+          width: 100%
+        }
+      }
+
+      strong {
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <button class="back-btn" onclick="history.back()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          fill="#fff"
+        >
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+          />
+        </svg>
+      </button>
+      <h1>CesaRide</h1>
+    </header>
+    <div class="content">
+      <div class="create-race">
+        <h2>Pedir carona</h2>
+
+        <div class="">
+            <div class="ride-item" style="margin-bottom: 20px;">
+              <h3 style="margin: 0">
+                <strong>Horário:</strong> {{ ride.time }}
+              </h3>
+              <h3 style="margin: 0"><strong>De:</strong> {{ ride.origin }}</h3>
+              <h3><strong>Para:</strong> {{ ride.destination }}</h3>
+
+              <p><strong>Motorista:</strong> {{ ride.driver }}</p>
+              <p><strong>Contato:</strong> {{ ride.driver.phone_number }}</p>
+              <p>
+                <strong>Passageiros:</strong> {{ ride.passengers.count}}/{{ride.max_passengers }}
+              </p>
+              <p>
+                <strong>Carro:</strong> {{ ride.car.brand }} {{ ride.car.model }}
+              </p>
+              <p><strong>Placa:</strong> {{ ride.car.plate }}</p>
+              <p>
+                <strong>Observações do carro:</strong> {{ride.car.observations}}
+              </p>
+              <p>
+                <strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}
+              </p>
+              <p>
+                <strong>Observações:</strong> {% if ride.observations %}
+                {{ride.observations }} {% else %}Nenhuma{% endif %}
+              </p>
+        </div>
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="origin">Endereço inicial:</label>
+            <input id="origin" name="origin" class="form-control" rows="3" />
+          </div>
+          <div class="form-group">
+            <label for="destination">Endereço final:</label>
+            <input
+              id="destination"
+              name="destination"
+              class="form-control"
+              rows="3"
+            />
+          </div>
+          <button id="submit" class="btn-green">Pedir carona</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

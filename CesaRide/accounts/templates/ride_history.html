@@ -239,19 +239,19 @@
         font-weight: 600;
       }
 
-      .accept-ride-button {
-        margin-top: 20px;
-        display: inline-block;
-        border-radius: 10px;
-        background-color: rgb(50, 247, 50);
-        padding: 10px;
-        text-decoration: none;
-      }
-      .accept-ride-button :hover {
-        background-color: rgb(1, 95, 1);
-        color: #fff;
-        transition: 0.5s;
-      }
+      .accept-ride-button{
+  margin-top: 10px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #FFF;
+  padding: 10px;
+    text-decoration: none;
+}
+.accept-ride-button:hover{
+  background-color: #45a049;
+  color: #fff;
+}
       .no-ride {
         display: flex;
         background-color: #18152c;
@@ -331,10 +331,15 @@
           <h3 style="margin: 0"><strong>De:</strong> {{ ride.origin }}</h3>
           <h3><strong>Para:</strong> {{ ride.destination }}</h3>
 
-          <p><strong>Motorista:</strong> {{ ride.driver }}</p>
+          
+          {% if ride.driver.username == request.user.username %}
+            <p><strong>Motorista:</strong> {{ ride.driver }} (Você)</p>
+          {% else %}
+            <p><strong>Motorista:</strong> {{ ride.driver }}</p>
+          {% endif %}
           <p><strong>Contato:</strong> {{ ride.driver.phone_number }}</p>
           <p>
-            <strong>Passageiros:</strong> {{ ride.passengers.count }}/{{ride.max_passengers }}
+            <strong>Passageiros:</strong> {{ ride.passengers.count}}/{{ride.max_passengers }}
           </p>
           <p>
             <strong>Carro:</strong> {{ ride.car.brand }} {{ ride.car.model }}
@@ -347,46 +352,21 @@
             <strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}
           </p>
           <p>
-            <strong>Observações:</strong> {% if ride.observations %} 
+            <strong>Observações:</strong> {% if ride.observations %}
             {{ride.observations }} {% else %}Nenhuma{% endif %}
           </p>
           {% if ride.status == "active" %}
           <p><strong>Status:</strong> Ativa</p>
           {% else %}
           <p><strong>Status:</strong> {{ride.status}}</p>
-          {% endif %} 
-
-          {% if ride.requestStatus %}
-          <h3 style="margin:0; margin-top: 10px;"><strong>Status da sua solicitação de participação: </strong><span style="color: #FFF;">{{ride.requestStatus}}</span></h3>
+          {% endif %} {% if ride.requestStatus %}
+          <h3 style="margin: 0; margin-top: 10px">
+            <strong>Status da sua solicitação de participação: </strong
+            ><span style="color: #fff">{{ride.requestStatus}}</span>
+          </h3>
           {% endif %}
+
           
-
-          {% if not ride.requestStatus %}
-          {% if not ride.passengers.count >= ride.max_passengers %}
-          <div>
-            <a
-              href="{% url 'request_ride' ride.id %}"
-              class="accept-ride-button"
-            >
-              Solicitar Participação
-            </a>
-          </div>
-          {% else %}
-          <div>
-            <a class="full_ride"> Lotado </a>
-          </div>
-            {% endif %}
-          {% else %}
-          <div>
-            <a
-              href="{% url 'detalhes_corrida' ride.id %}"
-              class="accept-ride-button"
-            >
-              Ver detalhes
-            </a>
-          </div>
-        {% endif %}
-
         </div>
 
         {% endfor %} {% else %}
