@@ -8,6 +8,7 @@ from django.contrib import messages
 from .models import Car, Ride, RequestParticipationInRide
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.db.models import Q
 
 # Create your views here.
 
@@ -254,8 +255,5 @@ def finish_ride(request, ride_id):
 def ride_history(request):
   username = request.user.username
   username = username.capitalize()
-  rides = Ride.objects.filter(driver=request.user, status='finished')
-  passenger_rides = Ride.objects.filter(passengers=request.user, status='finished')
-
-  rides.union(passenger_rides)
-  return render(request, 'ride_history.html', {'username': username, 'rides': rides, 'passenger_rides': passenger_rides})
+  rides = Ride.objects.filter(Q(driver=request.user) | Q(passengers=request.user), status='finished').distinct()
+  return render(request, 'ride_history.html', {'username': username, 'rides': rides})

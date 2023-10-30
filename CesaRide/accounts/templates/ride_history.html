@@ -297,7 +297,7 @@
       <ul class="sidebar-nav">
         <li><a href="#">Início</a></li>
         <li><a href="#">Perfil</a></li>
-        <li><a href="#">Histórico de corridas</a></li>
+        <li><a href="{% url 'ride_history' %}">Histórico de corridas</a></li>
         <li>
           <a href="{% url 'pagina_motorista' %}">Alterar para motorista</a>
         </li>
@@ -323,7 +323,7 @@
       </svg>
     </button>
     <div class="content" style="margin-top: 20px">
-      <h1 style="color: #fff; margin-top: -15px">Faça uma viagem</h1>
+      <h1 style="color: #fff; margin-top: -15px">Histórico de corridas</h1>
       <div class="ride-list">
         {% if rides %} {% for ride in rides %}
         <div class="ride-item">
@@ -355,10 +355,16 @@
             <strong>Observações:</strong> {% if ride.observations %}
             {{ride.observations }} {% else %}Nenhuma{% endif %}
           </p>
+          <p><strong>Passageiros:</strong></p>
+            <ul>
+                {% for passenger in ride.passengers.all %}
+                    <li>{{ passenger.username }}</li>
+                {% endfor %}
+            </ul>
           {% if ride.status == "active" %}
           <p><strong>Status:</strong> Ativa</p>
           {% else %}
-          <p><strong>Status:</strong> {{ride.status}}</p>
+          <p><strong>Status:</strong> Finalizada</p>
           {% endif %} {% if ride.requestStatus %}
           <h3 style="margin: 0; margin-top: 10px">
             <strong>Status da sua solicitação de participação: </strong
