@@ -65,12 +65,11 @@ def signin(request):
             return HttpResponse("Nome de Usuário ou Senha incorretos!")
     return render(request, 'registro/signin.html')
 
-
 def LogoutPage(request):
     logout(request)
     return redirect('login')
 
-
+@login_required(login_url='login')
 def driver_home(request):
     username = request.user.username
     username = username.capitalize()
@@ -79,6 +78,7 @@ def driver_home(request):
     return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars, 'rides': rides})
 
 
+@login_required(login_url='login')
 def passenger_home(request):
     username = request.user.username
     username = username.capitalize()
@@ -86,6 +86,7 @@ def passenger_home(request):
     return render(request, 'registro/passenger_home.html', {'username': username, 'rides': rides})
 
 
+@login_required(login_url='login')
 def choose_role(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -107,6 +108,7 @@ def choose_role(request):
     return render(request, 'registro/choose_role.html', {'form': form})
 
 
+@login_required(login_url='login')
 def car_create(request):
     if request.method == 'POST':
         form = CarForm(request.POST)
@@ -121,6 +123,7 @@ def car_create(request):
     return render(request, 'car_create.html', {'form': form})
 
 
+@login_required(login_url='login')
 def ride_create(request):
     if request.method == 'POST':
         car = request.POST.get('car')
@@ -149,6 +152,7 @@ def ride_create(request):
         return render(request, 'create_ride.html', context)
 
 
+@login_required(login_url='login')
 def car_list(request):
     username = request.user.username
     username = username.capitalize()
@@ -156,6 +160,7 @@ def car_list(request):
     return render(request, 'car_list.html', {'username': username, 'cars': cars})
 
 
+@login_required(login_url='login')
 def aceitar_corrida(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id)
     if ride.passengers.count() < ride.max_passengers:
@@ -167,6 +172,7 @@ def aceitar_corrida(request, ride_id):
         return HttpResponse("Desculpe, esta corrida já atingiu o número máximo de passageiros.")
 
 
+@login_required(login_url='login')
 def detalhes_corrida(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id)
     username = request.user.username
