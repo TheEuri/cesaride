@@ -72,7 +72,7 @@ https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/16e2d575-3438-47f0-8eb4-140a0f669e83)
 
 ## 2) Diagrama de Atividades atualizado:
-![image](https://media.discordapp.net/attachments/786999582025842738/1168591250040029294/Diagrama_em_branco.jpeg?ex=65525269&is=653fdd69&hm=e2cab38cabc70108110ec132759d8e623d756a98fc4074afe1259e2cc868e221&=&width=153&height=423)
+![Diagrama](https://github.com/TheEuri/cesaride/assets/62456615/5854275e-78f8-408c-a9f8-75769c0d95d6)
 
 ## 3) Screencast do Lo-Fi com ênfase nas novas histórias:
 colar link aqui
