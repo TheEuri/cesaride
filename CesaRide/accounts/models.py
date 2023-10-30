@@ -28,9 +28,6 @@ class CustomUser(AbstractUser):
         default=PASSENGER,
     )
 
-    
-    
-
 class LoginForm (forms.Form):
     username = forms.CharField()
 
@@ -47,7 +44,7 @@ class Car(models.Model):
 
 class Ride(models.Model):
     driver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='driver')
-    passengers = models.ManyToManyField(CustomUser, related_name='rides_taken', blank=True)
+    passengers = models.ManyToManyField(CustomUser, related_name='passengers')
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='car' )
     max_passengers = models.IntegerField()
     time = models.TimeField()
@@ -55,10 +52,5 @@ class Ride(models.Model):
     destination = models.CharField(max_length=100)
     observations = models.TextField(blank=True, null=True)
     passenger_price = models.DecimalField(max_digits=5, decimal_places=2)
-    status = models.CharField(max_length=1, default='active')
-    available_seats = models.PositiveIntegerField(default=0)
-    accepted_by_passenger = models.BooleanField(default=False)
-    
-    def __str__(self):
-        return f'Ride from {self.origin} to {self.destination}'
-    
+    status = models.CharField(default='active')
+
