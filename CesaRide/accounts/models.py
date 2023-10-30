@@ -52,5 +52,4 @@ class Ride(models.Model):
     destination = models.CharField(max_length=100)
     observations = models.TextField(blank=True, null=True)
     passenger_price = models.DecimalField(max_digits=5, decimal_places=2)
-    status = models.CharField(default='active')
-
+    status = models.CharField(default='active', max_length=14) 
