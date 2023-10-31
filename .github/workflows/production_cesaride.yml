@@ -41,7 +41,12 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
 
-      
+      - name: Run migrations
+        run: |
+          source venv/bin/activate
+          cd CesaRide
+          python manage.py makemigrations
+          python manage.py migrate
 
       - name: Run tests
         run: |
@@ -53,13 +58,6 @@ jobs:
           python manage.py runserver &
           sleep 5
           python manage.py test
-
-      - name: Cleaning testing files
-        run: |
-          cd SEUPROJETODJANGO/
-          rm db.sqlite3
-          rm .env
-          cd ..
     
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
@@ -71,7 +69,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: build
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
