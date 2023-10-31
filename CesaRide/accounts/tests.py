@@ -99,11 +99,7 @@ class TestSignupLogin(TestCase):
         browser.find_element(By.ID, 'observations').send_keys("Observação")
         time.sleep(0.5)
         browser.find_element(By.ID, 'submit').click()
-        time.sleep(5)
-        browser.find_element(By.ID, "menu-toggle").click()
         time.sleep(1)
-        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
-        time.sleep(0.5)
+        assert browser.current_url == "http://127.0.0.1:8000/driver_home"
         browser.close()
 
