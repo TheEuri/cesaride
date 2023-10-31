@@ -15,8 +15,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      TARGET_ENV: 'dev'
 
     steps:
       - uses: actions/checkout@v2
@@ -55,7 +53,14 @@ jobs:
           python manage.py runserver &
           sleep 5
           python manage.py test
-      
+
+      - name: Cleaning testing files
+        run: |
+          cd SEUPROJETODJANGO/
+          rm db.sqlite3
+          rm .env
+          cd ..
+    
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
@@ -66,7 +71,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build]
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
