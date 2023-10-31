@@ -84,7 +84,7 @@ https://drive.google.com/file/d/1OznSGmeEAAypPBEZ_7Q1XLEgOfubDH7L/view?usp=shari
 
 
 ## 5) CI / CD com build e deployment atualizado
-colar screencast do processo de build e deployment
+https://drive.google.com/file/d/1rINp1UBMemZ1BbAMla4CT14ZoxkekGfA/view?usp=sharing
 
 ## 6) Testes de Sistemas (E2E) Automatizados:
 https://drive.google.com/file/d/1X5CVnU-HbK_0TosYWE6fvQRQpe5XwnhD/view?usp=sharing
