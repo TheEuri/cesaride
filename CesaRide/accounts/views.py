@@ -65,6 +65,7 @@ def signin(request):
         user = authenticate(request, username=username, password=pass1)
         if user is not None:
             login(request, user)
+            print("Usuário logado com sucesso!")
             return redirect('choose_role')
         else:
             return HttpResponse("Nome de Usuário ou Senha incorretos!")
