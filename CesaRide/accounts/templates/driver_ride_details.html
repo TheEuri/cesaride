@@ -397,7 +397,7 @@ background-color: #f44336; /* Red */
                     Voltar
                   </a>        
                   
-                  <a href="{% url 'finish_ride' ride.id %}" class="finish-ride-button">
+                  <a href="{% url 'finish_ride' ride.id %}" id="btn-ending" class="finish-ride-button">
                     Finalizar Corrida
                   </a> 
                 </div>
@@ -419,12 +419,12 @@ background-color: #f44336; /* Red */
           <p><strong>Status:</strong> {{ request.status }}</p>
 
           <div>
-            <a href="{% url 'update_request' ride.id request.id 1 %}" class="accept-request-button">
+            <a href="{% url 'update_request' ride.id request.id 1 %}" id="btn-acecept" class="accept-request-button">
               Aceitar
             </a>                
           </div>
           <div>
-            <a href="{% url 'update_request' ride.id request.id 0 %}" class="decline-request-button">
+            <a href="{% url 'update_request' ride.id request.id 0 %}" id="btn-refuse" class="decline-request-button">
               Recusar
             </a>                
           </div>

@@ -249,7 +249,7 @@ def finish_ride(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id, driver=request.user)
     ride.status = 'finished'
     ride.save()
-    return redirect('driver_ride_details', ride_id=ride_id)
+    return redirect('pagina_motorista')
 
 @login_required(login_url='login')
 def ride_history(request):
