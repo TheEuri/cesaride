@@ -15,7 +15,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      TARGET_ENV: 'dev'
+      
     steps:
       - uses: actions/checkout@v2
 
@@ -41,9 +43,11 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
 
+      
+
       - name: Run tests
         run: |
-          cd CesaRide
+          cd ./CesaRide/
           python manage.py makemigrations
           sleep 5
           python manage.py migrate
