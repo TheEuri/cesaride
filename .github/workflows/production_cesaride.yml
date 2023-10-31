@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TARGET_ENV: 'dev'
-      
+
     steps:
       - uses: actions/checkout@v2
 
@@ -49,11 +49,11 @@ jobs:
         run: |
           cd ./CesaRide/
           python manage.py makemigrations
-          sleep 5
+          sleep 3
           python manage.py migrate
-          sleep 5
-          python manage.py runserver 
-          sleep 5
+          sleep 3
+          python manage.py runserver &
+          sleep 3
           python manage.py test
       
       - name: Upload artifact for deployment jobs
