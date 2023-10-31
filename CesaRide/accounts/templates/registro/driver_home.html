@@ -336,7 +336,7 @@ strong {
           {% for ride in rides %}
           
             <div class="ride-item">
-              <a href="{% url 'driver_ride_details' ride.id %}" style="color:#FFF; text-decoration: none;">
+              <a href="{% url 'driver_ride_details' ride.id %}" id="details" style="color:#FFF; text-decoration: none;">
               <h3 style="margin: 0;"><strong>Horário:</strong> {{ ride.time }}</h3>
               <h3 style="margin: 0;"><strong>De:</strong> {{ ride.origin }}</h3>
               <h3><strong>Para:</strong> {{ ride.destination }}</h3>
