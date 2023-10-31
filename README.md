@@ -76,7 +76,7 @@ https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 ![Diagrama](https://github.com/TheEuri/cesaride/assets/62456615/5854275e-78f8-408c-a9f8-75769c0d95d6)
 
 ## 3) Screencast do Lo-Fi com ênfase nas novas histórias:
-colar link aqui
+https://drive.google.com/file/d/1OznSGmeEAAypPBEZ_7Q1XLEgOfubDH7L/view?usp=sharing
 
 ## 4) Issue / Bug Tracker
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/8062f19b-8a50-4a15-a946-6a7d13b8b41a)
@@ -91,3 +91,6 @@ colar screencast da execução dos testes
 
 ## 7) Atualização Sobre o Pair Programming
   Na segunda entrega, aprimoramos a nossa abordagem de Pair Programming, mantendo estratégia de trabalhar em trios. O primeiro trio ficou constituído por Eurivaldo Filho, Pedro Wanderley e Filipe Serpa, já o segundo ficou com Gabriel Rodrigues, Alec Theotônio e Lucas Ferraz. Com base nos aprendizados da primeira entrega, decidimos adotar uma flexibilidade nesse modelo, em que os membros Alec Theotônio e Filipe Serpa ficaram alternando entre os trios e auxiliando ambos, garantindo que houvesse uma maior troca de conhecimento e aprendizado entre os membros. A orientação contínua dos membros com mais experiência agregou ainda mais o conhecimento técnico da equipe e a divisão de tarefas em grupos proporcionou uma melhor sinergia. Nossa equipe se utilizou bastante do recurso Live Share do Visual Studio Code, em que mais de uma pessoa poderia trabalhar em um mesmo código simultaneamente, otimizando ainda mais o nosso cenário de produção. Em resumo, a contínua adaptação da técnica do Pair Programming continua nos trazendo melhorias e bastante transmissão de conhecimento, bem como aperfeiçoando a relação da equipe.
+
+## 8) Screencast do site:
+https://drive.google.com/file/d/1kN-28wP9p8D-htF3tLq8Yvmq6Oq8-OeS/view?usp=sharing
