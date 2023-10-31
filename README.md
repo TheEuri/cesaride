@@ -68,8 +68,9 @@ https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 # Entrega 3:
 
 ## 1) Quadro da Sprint 2:
-![image](https://github.com/TheEuri/cesaride/assets/132586951/eccb962b-b9ec-454d-b1c5-e422cdfb3e93)
-![image](https://github.com/TheEuri/cesaride/assets/132586951/16e2d575-3438-47f0-8eb4-140a0f669e83)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/2bbfb387-acf9-4069-91c4-ffa42dfa9179)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/7bac34d3-d6cf-462e-91d6-807990b40e04)
+
 
 ## 2) Diagrama de Atividades atualizado:
 ![Diagrama](https://github.com/TheEuri/cesaride/assets/62456615/5854275e-78f8-408c-a9f8-75769c0d95d6)
