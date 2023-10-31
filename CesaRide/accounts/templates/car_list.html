@@ -213,7 +213,24 @@
       .content {
         margin-left: 0;
       }
+      
     }
+    .create-race {
+  text-align: right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.btn-green  {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+
+}
   </style>
 </head>
   <body>
@@ -235,7 +252,7 @@
       <ul class="sidebar-nav">
         <li><a href="{% url 'pagina_motorista' %}">Início</a></li>
         <li><a href="#">Perfil</a></li>
-        <li><a href="#">Histórico de corridas</a></li> 
+        <li><a href="{% url 'ride_history' %}">Histórico de corridas</a></li> 
         <li><a href="{% url 'pagina_passageiro' %}">Alterar para passageiro</a></li>
         <li><a href="#">Ver meus carros</a></li>
         <li><a href="{% url 'car_create' %}">Criar veículo</a></li>
@@ -253,6 +270,9 @@
         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
       </svg>
     </button>
+    <div class="create-race">
+      <a href="{% url 'car_create' %}" class="btn-green">Adicionar Veículo</a>
+    </div>
     <div class="content">
       <div class="car-list">
         {% if cars %}
@@ -268,6 +288,7 @@
         {% endif %}
       </div>
     </div>
+    
     <script>
       const menuToggle = document.querySelector('.menu-toggle');
       const sidebar = document.querySelector('.sidebar');

@@ -68,13 +68,14 @@ https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 # Entrega 3:
 
 ## 1) Quadro da Sprint 2:
-![image](https://github.com/TheEuri/cesaride/assets/132586951/eccb962b-b9ec-454d-b1c5-e422cdfb3e93)
-![image](https://github.com/TheEuri/cesaride/assets/132586951/16e2d575-3438-47f0-8eb4-140a0f669e83)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/2bbfb387-acf9-4069-91c4-ffa42dfa9179)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/7bac34d3-d6cf-462e-91d6-807990b40e04)
+
 
 ## 2) Diagrama de Atividades atualizado:
-colar link aqui
+![Diagrama](https://github.com/TheEuri/cesaride/assets/62456615/5854275e-78f8-408c-a9f8-75769c0d95d6)
 
-## 3) Screencast com ênfase nas novas histórias:
+## 3) Screencast do Lo-Fi com ênfase nas novas histórias:
 colar link aqui
 
 ## 4) Issue / Bug Tracker
@@ -87,3 +88,4 @@ colar screencast do processo de build e deployment
 colar screencast da execução dos testes 
 
 ## 7) Atualização Sobre o Pair Programming
+  Na segunda entrega, aprimoramos a nossa abordagem de Pair Programming, mantendo estratégia de trabalhar em trios. O primeiro trio ficou constituído por Eurivaldo Filho, Pedro Wanderley e Filipe Serpa, já o segundo ficou com Gabriel Rodrigues, Alec Theotônio e Lucas Ferraz. Com base nos aprendizados da primeira entrega, decidimos adotar uma flexibilidade nesse modelo, em que os membros Alec Theotônio e Filipe Serpa ficaram alternando entre os trios e auxiliando ambos, garantindo que houvesse uma maior troca de conhecimento e aprendizado entre os membros. A orientação contínua dos membros com mais experiência agregou ainda mais o conhecimento técnico da equipe e a divisão de tarefas em grupos proporcionou uma melhor sinergia. Nossa equipe se utilizou bastante do recurso Live Share do Visual Studio Code, em que mais de uma pessoa poderia trabalhar em um mesmo código simultaneamente, otimizando ainda mais o nosso cenário de produção. Em resumo, a contínua adaptação da técnica do Pair Programming continua nos trazendo melhorias e bastante transmissão de conhecimento, bem como aperfeiçoando a relação da equipe.

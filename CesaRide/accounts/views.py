@@ -1,14 +1,17 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from . forms import CustomUserCreationForm, LoginForm, CarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-from .models import Car, Ride
-
+from .models import Car, Ride, RequestParticipationInRide
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.db.models import Q
 
 # Create your views here.
+
 
 @login_required(login_url='login')
 def HomePage(request):
@@ -27,6 +30,7 @@ def signup(request):
         email = request.POST.get('email')
         pass1 = request.POST.get('password1')
         pass2 = request.POST.get('password2')
+        phone_number = request.POST.get('phone_number')
 
         if User.objects.filter(username=username):
             return HttpResponse("Usuário já existe! Por favor, tentre outro nome")
@@ -44,7 +48,7 @@ def signup(request):
             return HttpResponse("Sua senha e confirmação de senha não são iguais!")
         else:
 
-            my_user = User.objects.create_user(username, email, pass1)
+            my_user = User.objects.create_user(username=username, email=email, password=pass1, phone_number=phone_number)
             my_user.save()
             return redirect('login')
 
@@ -69,6 +73,7 @@ def LogoutPage(request):
     return redirect('login')
 
 
+@login_required(login_url='login')
 def driver_home(request):
     username = request.user.username
     username = username.capitalize()
@@ -77,13 +82,25 @@ def driver_home(request):
     return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars, 'rides': rides})
 
 
+@login_required(login_url='login')
 def passenger_home(request):
   username = request.user.username
   username = username.capitalize()
-  rides = Ride.objects.filter(status='active').exclude(driver=request.user)
+  rides = Ride.objects.filter(status='active').exclude(driver=request.user).order_by('time')
+  requests = RequestParticipationInRide.objects.filter(passenger=request.user)
+  for ride in rides:
+    for requestPart in requests:
+      if ride.id == requestPart.ride.id:
+        ride.requestStatus = requestPart.status
+
+        print(ride)
+        break
+
+    
   return render(request, 'registro/passenger_home.html', {'username': username, 'rides': rides})
 
 
+@login_required(login_url='login')
 def choose_role(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -105,6 +122,7 @@ def choose_role(request):
     return render(request, 'registro/choose_role.html', {'form': form})
 
 
+@login_required(login_url='login')
 def car_create(request):
     if request.method == 'POST':
         form = CarForm(request.POST)
@@ -119,6 +137,7 @@ def car_create(request):
     return render(request, 'car_create.html', {'form': form})
 
 
+@login_required(login_url='login')
 def ride_create(request):
     if request.method == 'POST':
         car = request.POST.get('car')
@@ -129,7 +148,8 @@ def ride_create(request):
         observations = request.POST.get('observations')
         passenger_price = request.POST.get('price')
 
-        print(car, max_passengers, time, origin, destination, observations, passenger_price)
+        print(car, max_passengers, time, origin,
+              destination, observations, passenger_price)
 
         if car and max_passengers and time and origin and destination and passenger_price and float(passenger_price) < 999.00 and float(passenger_price) > 0:
             ride = Ride.objects.create(driver=request.user, max_passengers=max_passengers, time=time, origin=origin,
@@ -138,7 +158,7 @@ def ride_create(request):
 
             print(ride)
             return redirect('pagina_motorista')
-        else:    
+        else:
             return HttpResponse("Preencha todos os campos corretamente!")
     else:
         cars = Car.objects.filter(user=request.user)
@@ -146,8 +166,94 @@ def ride_create(request):
         return render(request, 'create_ride.html', context)
 
 
+@login_required(login_url='login')
 def car_list(request):
     username = request.user.username
     username = username.capitalize()
     cars = Car.objects.filter(user=request.user)
     return render(request, 'car_list.html', {'username': username, 'cars': cars})
+
+
+# @login_required(login_url='login')
+# def aceitar_corrida(request, ride_id):
+#     ride = get_object_or_404(Ride, id=ride_id)
+#     if ride.passengers.count() < ride.max_passengers:
+#         ride.passengers.add(request.user)
+#         ride.save()
+
+#         return redirect('detalhes_corrida', ride_id=ride_id)
+#     else:
+#         return HttpResponse("Desculpe, esta corrida já atingiu o número máximo de passageiros.")
+
+@login_required(login_url='login')
+def request_participation_on_ride(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id)
+    if request.method == 'POST':
+      if ride.passengers.count() >= ride.max_passengers:
+        return HttpResponse("Desculpe, esta corrida já atingiu o número máximo de passageiros.")
+      else:
+        if (RequestParticipationInRide.objects.filter(ride=ride, passenger=request.user).exists()):
+          return HttpResponse("Você já solicitou participação nesta corrida!")
+        else:
+          origin = request.POST.get('origin')
+          destination = request.POST.get('destination')
+          if origin and destination:
+            request_participation = RequestParticipationInRide.objects.create(ride=ride, passenger=request.user, origin=origin, destination=destination)
+            request_participation.save()
+            return redirect('detalhes_corrida', ride_id=ride_id)
+          else:
+            return HttpResponse("Preencha todos os campos corretamente!")
+    else:
+      if (RequestParticipationInRide.objects.filter(ride=ride, passenger=request.user).exists()):
+          return redirect('detalhes_corrida', ride_id=ride_id)
+      else:
+        return render(request, 'request_ride.html', {'ride': ride})
+
+@login_required(login_url='login')
+def detalhes_corrida(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id)
+    requestStatus = RequestParticipationInRide.objects.filter(ride=ride, passenger=request.user)[0]
+    username = request.user.username
+    username = username.capitalize()
+
+    return render(request, 'detalhes.html', {'username': username, 'ride': ride, 'requestStatus': requestStatus})
+
+@login_required(login_url='login')
+def driver_ride_details(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id)
+    username = request.user.username
+    username = username.capitalize()
+
+    requests = RequestParticipationInRide.objects.filter(ride=ride, status='pending')
+
+    return render(request, 'driver_ride_details.html', {'username': username, 'ride': ride, 'requests': requests})
+
+@login_required(login_url='login')
+def update_request(request, ride_id, request_id, status):
+    ride = get_object_or_404(Ride, id=ride_id, driver=request.user)
+    requestPart = get_object_or_404(RequestParticipationInRide, id=request_id, ride=ride)
+
+    if status == 1:
+      requestPart.status = 'accepted'
+      requestPart.save()
+      ride.passengers.add(requestPart.passenger)
+      ride.save()
+    elif status == 0:
+      requestPart.status = 'rejected'
+      requestPart.save()
+
+    return redirect('driver_ride_details', ride_id=ride_id)
+
+@login_required(login_url='login')
+def finish_ride(request, ride_id):
+    ride = get_object_or_404(Ride, id=ride_id, driver=request.user)
+    ride.status = 'finished'
+    ride.save()
+    return redirect('driver_ride_details', ride_id=ride_id)
+
+@login_required(login_url='login')
+def ride_history(request):
+  username = request.user.username
+  username = username.capitalize()
+  rides = Ride.objects.filter(Q(driver=request.user) | Q(passengers=request.user), status='finished').distinct()
+  return render(request, 'ride_history.html', {'username': username, 'rides': rides})
