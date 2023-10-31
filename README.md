@@ -87,7 +87,7 @@ https://drive.google.com/file/d/1OznSGmeEAAypPBEZ_7Q1XLEgOfubDH7L/view?usp=shari
 https://drive.google.com/file/d/1rINp1UBMemZ1BbAMla4CT14ZoxkekGfA/view?usp=sharing
 
 ## 6) Testes de Sistemas (E2E) Automatizados:
-https://drive.google.com/file/d/1X5CVnU-HbK_0TosYWE6fvQRQpe5XwnhD/view?usp=sharing
+https://drive.google.com/file/d/1TTIhNHhOeViO3uZ1M49uT7zyaNy8Zkch/view?usp=sharing
 
 ## 7) Atualização Sobre o Pair Programming
   Na segunda entrega, aprimoramos a nossa abordagem de Pair Programming, mantendo estratégia de trabalhar em trios. O primeiro trio ficou constituído por Eurivaldo Filho, Pedro Wanderley e Filipe Serpa, já o segundo ficou com Gabriel Rodrigues, Alec Theotônio e Lucas Ferraz. Com base nos aprendizados da primeira entrega, decidimos adotar uma flexibilidade nesse modelo, em que os membros Alec Theotônio e Filipe Serpa ficaram alternando entre os trios e auxiliando ambos, garantindo que houvesse uma maior troca de conhecimento e aprendizado entre os membros. A orientação contínua dos membros com mais experiência agregou ainda mais o conhecimento técnico da equipe e a divisão de tarefas em grupos proporcionou uma melhor sinergia. Nossa equipe se utilizou bastante do recurso Live Share do Visual Studio Code, em que mais de uma pessoa poderia trabalhar em um mesmo código simultaneamente, otimizando ainda mais o nosso cenário de produção. Em resumo, a contínua adaptação da técnica do Pair Programming continua nos trazendo melhorias e bastante transmissão de conhecimento, bem como aperfeiçoando a relação da equipe.
