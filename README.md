@@ -79,7 +79,9 @@ https://drive.google.com/file/d/1B1_GCaQxFNiIsvHp9-caiym1-hxvBvQv/view
 colar link aqui
 
 ## 4) Issue / Bug Tracker
-colar print aqui
+![image](https://github.com/TheEuri/cesaride/assets/132586951/8062f19b-8a50-4a15-a946-6a7d13b8b41a)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/01e7d1dd-548a-4114-8ad4-32dfa76b6900)
+
 
 ## 5) CI / CD com build e deployment atualizado
 colar screencast do processo de build e deployment
