@@ -49,11 +49,11 @@ jobs:
         run: |
           cd ./CesaRide/
           python manage.py makemigrations
-          sleep 3
+          sleep 5
           python manage.py migrate
-          sleep 3
+          sleep 5
           python manage.py runserver &
-          sleep 3
+          sleep 5
           python manage.py test
       
       - name: Upload artifact for deployment jobs
