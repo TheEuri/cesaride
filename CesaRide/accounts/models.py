@@ -44,15 +44,26 @@ class Car(models.Model):
 
 class Ride(models.Model):
     driver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='driver')
+
     passengers = models.ManyToManyField(CustomUser, related_name='passengers')
+
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='car' )
+
     max_passengers = models.IntegerField()
+
     time = models.TimeField()
+
     origin = models.CharField(max_length=100)
+
     destination = models.CharField(max_length=100)
+
     observations = models.TextField(blank=True, null=True)
+
     passenger_price = models.DecimalField(max_digits=5, decimal_places=2)
-    status = models.CharField(default='active', max_length=14) 
+
+    status = models.CharField(default='active', max_length=14)
+
+    rating = models.IntegerField(blank=True, null=True)
     
 class RequestParticipationInRide(models.Model):
     ride = models.ForeignKey(Ride, on_delete=models.CASCADE)

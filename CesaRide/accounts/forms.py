@@ -56,4 +56,7 @@ class CarForm(forms.ModelForm):
       if len(observations) > 100:
           raise forms.ValidationError('As observações devem ter no máximo 100 caracteres.')
       return observations
+  
+class RatingForm (forms.Form):
+    rating = forms.IntegerField(min_value = 1, max_value = 5)
 

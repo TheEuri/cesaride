@@ -247,9 +247,14 @@ def update_request(request, ride_id, request_id, status):
 @login_required(login_url='login')
 def finish_ride(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id, driver=request.user)
-    ride.status = 'finished'
-    ride.save()
-    return redirect('pagina_motorista')
+    
+    if request.method == 'POST':
+        ride.status = 'finished'
+        ride.rating = request.POST.get('rating')
+        ride.save()
+        return redirect('pagina_motorista')
+    
+    return render(request, 'finish_ride.html', {'ride': ride})
 
 @login_required(login_url='login')
 def ride_history(request):
