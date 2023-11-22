@@ -294,7 +294,8 @@ def request_lost_item(request, ride_id):
         return HttpResponse("Você só pode solicitar itens perdidos de corridas finalizadas!")
     else:
       return HttpResponse("Preencha todos os campos corretamente!")
-    
+
+@login_required(login_url='login')
 def lost_items(request):
   username = request.user.username
   username = username.capitalize()
