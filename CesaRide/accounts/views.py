@@ -5,7 +5,7 @@ from . forms import CustomUserCreationForm, LoginForm, CarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-from .models import Car, LostItemRequest, Ride, RequestParticipationInRide
+from .models import Car, LostItemRequest, Ride, RequestParticipationInRide, RideReview
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import Q
@@ -262,7 +262,8 @@ def ride_history(request):
   username = request.user.username
   username = username.capitalize()
   rides = Ride.objects.filter(Q(driver=request.user) | Q(passengers=request.user), status__in=['finished', 'cancelled']).distinct()
-  return render(request, 'ride_history.html', {'username': username, 'rides': rides})
+  reviews = RideReview.objects.filter(ride__in=rides)
+  return render(request, 'ride_history.html', {'username': username, 'rides': rides, 'reviews': reviews})
 
 @login_required(login_url='login')
 def ride_cancel(request, ride_id):
@@ -301,3 +302,28 @@ def lost_items(request):
   username = username.capitalize()
   lost_items = LostItemRequest.objects.filter(ride__driver=request.user)
   return render(request, 'lost_items.html', {'username': username, 'lost_items': lost_items})
+
+@login_required(login_url='login')
+def rate_ride(request, ride_id):
+  ride = get_object_or_404(Ride, id=ride_id)
+  if request.method == 'GET':
+    return render(request, 'review_driver.html', {'ride': ride})
+  if request.method == 'POST':
+    rating = request.POST.get('rate')
+    review = request.POST.get('description')
+    if rating:
+      if ride.status == 'finished':
+        review_driver = RideReview.objects.create(ride=ride, passenger=request.user, rating=rating, review=review)
+        review_driver.save()
+        return redirect('pagina_passageiro')
+      else:
+        return HttpResponse("Você só pode avaliar motoristas de corridas finalizadas!")
+    else:
+      return HttpResponse("Preencha todos os campos corretamente!")
+    
+@login_required(login_url='login')
+def view_rate(request):
+  username = request.user.username
+  username = username.capitalize()
+  reviews = RideReview.objects.filter(ride__driver=request.user)
+  return render(request, 'driver_rate.html', {'username': username, 'reviews': reviews})

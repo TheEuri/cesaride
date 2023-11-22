@@ -79,5 +79,11 @@ class LostItemRequest(models.Model):
     item_name = models.CharField(max_length=100)
     item_description = models.CharField(max_length=100)
 
+class RideReview(models.Model):
+    ride = models.ForeignKey(Ride, on_delete=models.CASCADE)
+    passenger = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    review = models.TextField(blank=True, null=True)
+
 
 

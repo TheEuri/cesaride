@@ -39,5 +39,8 @@ urlpatterns = [
     path('driver/ride/<int:ride_id>/finish_ride', views.finish_ride, name='finish_ride'),
     path('driver/ride/<int:ride_id>/cancel_ride', views.ride_cancel, name='cancel_ride'),
     path('driver/lost_items/', views.lost_items, name='driver_lost_items'),
+    path('driver/view_rate/', views.view_rate, name='view_rate'),
+
+    path('ride/<int:ride_id>/rate_ride', views.rate_ride, name='rate_ride'),
     path('ride_history/', views.ride_history, name='ride_history'),
 ]
