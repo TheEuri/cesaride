@@ -248,7 +248,7 @@ def update_request(request, ride_id, request_id, status):
 def finish_ride(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id, driver=request.user)
     
-    if request.method == 'POST':
+    if request.method == 'GET':
         ride.status = 'finished'
         ride.rating = request.POST.get('rating')
         ride.save()
