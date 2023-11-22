@@ -284,7 +284,7 @@ def request_lost_item(request, ride_id):
     return render(request, 'request_lost_item.html', {'ride': ride})
   if request.method == 'POST':
     item_name = request.POST.get('item')
-    item_description = request.POST.get('item')
+    item_description = request.POST.get('description')
     if item_name and item_description:
       if ride.status == 'finished':
         request_lost_item = LostItemRequest.objects.create(ride=ride, passenger=request.user, item_name=item_name, item_description=item_description)
