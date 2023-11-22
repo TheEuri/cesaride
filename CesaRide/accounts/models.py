@@ -72,4 +72,12 @@ class RequestParticipationInRide(models.Model):
     origin = models.CharField(max_length=100)
     destination = models.CharField(max_length=100)
 
+class LostItemRequest(models.Model):
+    ride = models.ForeignKey(Ride, on_delete=models.CASCADE)
+    passenger = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    status = models.CharField(default='pending', max_length=14)
+    item_name = models.CharField(max_length=100)
+    item_description = models.CharField(max_length=100)
+
+
 

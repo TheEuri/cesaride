@@ -5,7 +5,7 @@ from . forms import CustomUserCreationForm, LoginForm, CarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-from .models import Car, Ride, RequestParticipationInRide
+from .models import Car, LostItemRequest, Ride, RequestParticipationInRide
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import Q
@@ -75,11 +75,12 @@ def LogoutPage(request):
 
 @login_required(login_url='login')
 def driver_home(request):
-    username = request.user.username
-    username = username.capitalize()
-    cars = Car.objects.filter(user=request.user)
-    rides = Ride.objects.filter(driver=request.user, status='active')
-    return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars, 'rides': rides})
+  username = request.user.username
+  username = username.capitalize()
+  cars = Car.objects.filter(user=request.user)
+  rides = Ride.objects.filter(driver=request.user, status='active')
+  lost_items = LostItemRequest.objects.filter(ride__driver=request.user)
+  return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars, 'rides': rides, 'lost_items': lost_items})
 
 
 @login_required(login_url='login')
@@ -275,3 +276,27 @@ def ride_cancel(request, ride_id):
     requestPart.status = 'cancelled'
     requestPart.save()
     return redirect('pagina_passageiro')
+
+
+def request_lost_item(request, ride_id):
+  ride = get_object_or_404(Ride, id=ride_id)
+  if request.method == 'GET':
+    return render(request, 'request_lost_item.html', {'ride': ride})
+  if request.method == 'POST':
+    item_name = request.POST.get('item')
+    item_description = request.POST.get('item')
+    if item_name and item_description:
+      if ride.status == 'finished':
+        request_lost_item = LostItemRequest.objects.create(ride=ride, passenger=request.user, item_name=item_name, item_description=item_description)
+        request_lost_item.save()
+        return redirect('pagina_passageiro')
+      else:
+        return HttpResponse("Você só pode solicitar itens perdidos de corridas finalizadas!")
+    else:
+      return HttpResponse("Preencha todos os campos corretamente!")
+    
+def lost_items(request):
+  username = request.user.username
+  username = username.capitalize()
+  lost_items = LostItemRequest.objects.filter(ride__driver=request.user)
+  return render(request, 'lost_items.html', {'username': username, 'lost_items': lost_items})

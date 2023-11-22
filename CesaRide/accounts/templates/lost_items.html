@@ -284,67 +284,38 @@
       >
         Voltar
       </button>
-      <h1 style="color: #fff">Histórico de corridas</h1>
+      <h1 style="color: #fff">Itens perdidos</h1>
       <div class="ride-list">
-        {% if rides %} {% for ride in rides %}
+        {% if lost_items %} {% for item in lost_items %}
         <div class="ride-item">
-          <h3 style="margin: 0"><strong>Horário:</strong> {{ ride.time }}</h3>
-          <h3 style="margin: 0"><strong>De:</strong> {{ ride.origin }}</h3>
-          <h3><strong>Para:</strong> {{ ride.destination }}</h3>
-
-          {% if ride.driver.username == request.user.username %}
-          <p><strong>Motorista:</strong> {{ ride.driver }} (Você)</p>
-          {% else %}
-          <p><strong>Motorista:</strong> {{ ride.driver }}</p>
-          {% endif %}
-          <p><strong>Contato:</strong> {{ ride.driver.phone_number }}</p>
-          <p>
-            <strong>Passageiros:</strong>
-            {{ride.passengers.count}}/{{ride.max_passengers }}
-          </p>
-          <p>
-            <strong>Carro:</strong> {{ ride.car.brand }} {{ ride.car.model }}
-          </p>
-          <p><strong>Placa:</strong> {{ ride.car.plate }}</p>
-          <p>
-            <strong>Observações do carro:</strong> {{ride.car.observations}}
-          </p>
-          <p>
-            <strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}
-          </p>
-          <p>
-            <strong>Observações:</strong> {% if ride.observations %}
-            {{ride.observations }} {% else %}Nenhuma{% endif %}
-          </p>
-          <p><strong>Passageiros:</strong></p>
-          <ul>
-            {% for passenger in ride.passengers.all %}
-            <li>{{ passenger.username }}</li>
-            {% endfor %}
-          </ul>
-          {% if ride.status == "active" %}
-          <p><strong>Status:</strong> Ativa</p>
-          {% else %} {% if ride.status == "finished" %}
-          <p><strong>Status:</strong> Finalizada</p>
-          {% elif ride.status == "cancelled" %}
-          <p><strong>Status:</strong> Cancelada</p>
-          {% endif %} {% endif %} {% if ride.requestStatus %}
-          <h3 style="margin: 0; margin-top: 10px">
-            <strong>Status da sua solicitação de participação: </strong
-            ><span style="color: #fff">{{ride.requestStatus}}</span>
+          <h3 style="margin: 0">
+            <strong>Horário:</strong> {{ item.ride.time }}
           </h3>
-          {% endif %} {% if request.user in ride.passengers.all and ride.status == "finished" %}
-          <a href="{% url 'request_lost_item' ride.id %}" onclick="" class="accept-ride-button" style="margin-top: 20px;">
-                      Solicitar item perdido
-                    </a>
-          {% endif %}
+          <h3 style="margin: 0"><strong>De:</strong> {{ item.ride.origin }}</h3>
+          <h3><strong>Para:</strong> {{ item.ride.destination }}</h3>
+          <p>
+            <strong>Passageiro:</strong>
+            {{item.passenger.username}}
+          </p>
+
+          <p>
+            <strong>Contato:</strong>
+            {{item.passenger.phone_number}}
+          </p>
+          <p>
+            <strong>Carro:</strong> {{ item.ride.car.brand }} {{item.ride.car.model }}
+          </p>
+
+          <p><strong>Item:</strong> {{ item.item_name }}</p>
+
+          <p><strong>Descrição do item:</strong> {{item.item_description}}</p>
         </div>
 
-        {% endfor %} {% else %}
-        <div class="no-ride">
-          <p>Não tem nenhuma corrida disponível no momento.</p>
-        </div>
-        {% endif %}
+          {% endfor %} {% else %}
+          <div class="no-ride">
+            <p>Não tem nenhuma corrida disponível no momento.</p>
+          </div>
+          {% endif %}
       </div>
     </div>
   </body>
