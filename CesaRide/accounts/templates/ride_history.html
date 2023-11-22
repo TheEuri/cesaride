@@ -324,7 +324,12 @@
           {% if ride.status == "active" %}
           <p><strong>Status:</strong> Ativa</p>
           {% else %}
-          <p><strong>Status:</strong> Finalizada</p>
+       
+          {% if ride.status == "finished" %}
+            <p><strong>Status:</strong> Finalizada</p>
+          {% elif ride.status == "cancelled" %}
+            <p><strong>Status:</strong> Cancelada</p>
+          {% endif %}
           {% endif %} {% if ride.requestStatus %}
           <h3 style="margin: 0; margin-top: 10px">
             <strong>Status da sua solicitação de participação: </strong

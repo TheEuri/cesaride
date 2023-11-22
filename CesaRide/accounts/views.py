@@ -260,5 +260,18 @@ def finish_ride(request, ride_id):
 def ride_history(request):
   username = request.user.username
   username = username.capitalize()
-  rides = Ride.objects.filter(Q(driver=request.user) | Q(passengers=request.user), status='finished').distinct()
+  rides = Ride.objects.filter(Q(driver=request.user) | Q(passengers=request.user), status__in=['finished', 'cancelled']).distinct()
   return render(request, 'ride_history.html', {'username': username, 'rides': rides})
+
+@login_required(login_url='login')
+def ride_cancel(request, ride_id):
+  ride = get_object_or_404(Ride, id=ride_id)
+  if request.user == ride.driver:
+    ride.status = 'cancelled'
+    ride.save()
+    return redirect('pagina_motorista')
+  else:
+    requestPart = get_object_or_404(RequestParticipationInRide, ride=ride, passenger=request.user)
+    requestPart.status = 'cancelled'
+    requestPart.save()
+    return redirect('pagina_passageiro')
