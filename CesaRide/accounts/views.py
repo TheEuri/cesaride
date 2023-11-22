@@ -277,7 +277,7 @@ def ride_cancel(request, ride_id):
     requestPart.save()
     return redirect('pagina_passageiro')
 
-
+@login_required(login_url='login')
 def request_lost_item(request, ride_id):
   ride = get_object_or_404(Ride, id=ride_id)
   if request.method == 'GET':
