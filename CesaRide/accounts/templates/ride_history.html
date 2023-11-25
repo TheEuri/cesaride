@@ -339,8 +339,9 @@
                     </a>
           {% endif %}
 
+          {% if reviews %}
           {% for review in reviews %}
-          {% if review.ride == ride and review.passenger.username == request.user.username%}
+          {% if review.ride == ride and review.passenger.username == request.user.username %}
             <a href="" onclick="" class="accept-ride-button" style="margin-top: 20px;  background-color: #777777 !important; cursor:not-allowed;" disable>
               Corrida já avaliada
             </a>
@@ -350,6 +351,11 @@
             </a>
             {% endif %}
         {% endfor %}
+        {% elif ride.driver.username != request.user.username %}  
+        <a href="{% url 'rate_ride' ride.id %}" onclick="" class="accept-ride-button" style="margin-top: 20px; ">
+          Avaliar motorista
+        </a>
+        {% endif %}
          
 
         </div>
