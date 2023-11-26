@@ -35,7 +35,7 @@ jobs:
           chromedriver --url-base=/wd/hub &
       - name: Run local Server
         run: |
-          cd Cesaride
+          cd CesaRide
           python manage.py runserver &
           sleep 5
           python manage.py test
