@@ -1,7 +1,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <title>CesaRide - Passageiro</title>
+    <title>CesaRide - Sua avaliação</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -284,87 +284,30 @@
       >
         Voltar
       </button>
-      <h1 style="color: #fff">Histórico de corridas</h1>
+      <h1 style="color: #fff">Avaliações recebidas</h1>
       <div class="ride-list">
-        {% if rides %} {% for ride in rides %}
+        {% if reviews %} {% for review in reviews %}
         <div class="ride-item">
-          <h3 style="margin: 0"><strong>Horário:</strong> {{ ride.time }}</h3>
-          <h3 style="margin: 0"><strong>De:</strong> {{ ride.origin }}</h3>
-          <h3><strong>Para:</strong> {{ ride.destination }}</h3>
-
-          {% if ride.driver.username == request.user.username %}
-          <p><strong>Motorista:</strong> {{ ride.driver }} (Você)</p>
-          {% else %}
-          <p><strong>Motorista:</strong> {{ ride.driver }}</p>
-          {% endif %}
-          <p><strong>Contato:</strong> {{ ride.driver.phone_number }}</p>
-          <p>
-            <strong>Passageiros:</strong>
-            {{ride.passengers.count}}/{{ride.max_passengers }}
-          </p>
-          <p>
-            <strong>Carro:</strong> {{ ride.car.brand }} {{ ride.car.model }}
-          </p>
-          <p><strong>Placa:</strong> {{ ride.car.plate }}</p>
-          <p>
-            <strong>Observações do carro:</strong> {{ride.car.observations}}
-          </p>
-          <p>
-            <strong>Preço por passageiro:</strong> R$ {{ ride.passenger_price }}
-          </p>
-          <p>
-            <strong>Observações:</strong> {% if ride.observations %}
-            {{ride.observations }} {% else %}Nenhuma{% endif %}
-          </p>
-          <p><strong>Passageiros:</strong></p>
-          <ul>
-            {% for passenger in ride.passengers.all %}
-            <li>{{ passenger.username }}</li>
-            {% endfor %}
-          </ul>
-          {% if ride.status == "active" %}
-          <p><strong>Status:</strong> Ativa</p>
-          {% else %} {% if ride.status == "finished" %}
-          <p><strong>Status:</strong> Finalizada</p>
-          {% elif ride.status == "cancelled" %}
-          <p><strong>Status:</strong> Cancelada</p>
-          {% endif %} {% endif %} {% if ride.requestStatus %}
-          <h3 style="margin: 0; margin-top: 10px">
-            <strong>Status da sua solicitação de participação: </strong
-            ><span style="color: #fff">{{ride.requestStatus}}</span>
+          <h3 style="margin: 0">
+            <strong>Horário:</strong> {{ review.ride.time }}
           </h3>
-          {% endif %} {% if request.user in ride.passengers.all and ride.status == "finished" %}
-          <a href="{% url 'request_lost_item' ride.id %}" onclick="" class="accept-ride-button" style="margin-top: 20px;">
-                      Solicitar item perdido
-                    </a>
+          <h3 style="margin: 0"><strong>De:</strong> {{ review.ride.origin }}</h3>
+          <h3><strong>Para:</strong> {{ review.ride.destination }}</h3>
+
+          <p>
+            <strong>Carro:</strong> {{ review.ride.car.brand }} {{review.ride.car.model }}
+          </p>
+
+          <p><strong>Avaliação:</strong> {{ review.rating }}</p>
+
+          <p><strong>Descrição:</strong> {{review.review}}</p>
+        </div>
+
+          {% endfor %} {% else %}
+          <div class="no-ride">
+            <p>Você ainda não foi avaliado.</p>
+          </div>
           {% endif %}
-
-          {% if reviews %}
-          {% for review in reviews %}
-          {% if review.ride == ride and review.passenger.username == request.user.username %}
-            <a href="" onclick="" class="accept-ride-button" style="margin-top: 20px;  background-color: #777777 !important; cursor:not-allowed;" disable>
-              Corrida já avaliada
-            </a>
-            {% elif ride.driver.username != request.user.username %}
-            <a href="{% url 'rate_ride' ride.id %}" onclick="" class="accept-ride-button" style="margin-top: 20px; ">
-              Avaliar motorista
-            </a>
-            {% endif %}
-        {% endfor %}
-        {% elif ride.driver.username != request.user.username %}  
-        <a href="{% url 'rate_ride' ride.id %}" onclick="" class="accept-ride-button" style="margin-top: 20px; ">
-          Avaliar motorista
-        </a>
-        {% endif %}
-         
-
-        </div>
-
-        {% endfor %} {% else %}
-        <div class="no-ride">
-          <p>Não tem nenhuma corrida disponível no momento.</p>
-        </div>
-        {% endif %}
       </div>
     </div>
   </body>

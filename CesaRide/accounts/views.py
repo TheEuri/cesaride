@@ -5,7 +5,7 @@ from . forms import CustomUserCreationForm, LoginForm, CarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-from .models import Car, Ride, RequestParticipationInRide
+from .models import Car, LostItemRequest, Ride, RequestParticipationInRide, RideReview
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import Q
@@ -79,11 +79,12 @@ def LogoutPage(request):
 
 @login_required(login_url='login')
 def driver_home(request):
-    username = request.user.username
-    username = username.capitalize()
-    cars = Car.objects.filter(user=request.user)
-    rides = Ride.objects.filter(driver=request.user, status='active')
-    return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars, 'rides': rides})
+  username = request.user.username
+  username = username.capitalize()
+  cars = Car.objects.filter(user=request.user)
+  rides = Ride.objects.filter(driver=request.user, status='active')
+  lost_items = LostItemRequest.objects.filter(ride__driver=request.user)
+  return render(request, 'registro/driver_home.html', {'username': username, 'cars': cars, 'rides': rides, 'lost_items': lost_items})
 
 
 @login_required(login_url='login')
@@ -251,13 +252,82 @@ def update_request(request, ride_id, request_id, status):
 @login_required(login_url='login')
 def finish_ride(request, ride_id):
     ride = get_object_or_404(Ride, id=ride_id, driver=request.user)
-    ride.status = 'finished'
-    ride.save()
-    return redirect('pagina_motorista')
+    
+    if request.method == 'GET':
+        ride.status = 'finished'
+        ride.rating = request.POST.get('rating')
+        ride.save()
+        return redirect('pagina_motorista')
+    
+    return render(request, 'finish_ride.html', {'ride': ride})
 
 @login_required(login_url='login')
 def ride_history(request):
   username = request.user.username
   username = username.capitalize()
-  rides = Ride.objects.filter(Q(driver=request.user) | Q(passengers=request.user), status='finished').distinct()
-  return render(request, 'ride_history.html', {'username': username, 'rides': rides})
+  rides = Ride.objects.filter(Q(driver=request.user) | Q(passengers=request.user), status__in=['finished', 'cancelled']).distinct()
+  reviews = RideReview.objects.filter(ride__in=rides)
+  return render(request, 'ride_history.html', {'username': username, 'rides': rides, 'reviews': reviews})
+
+@login_required(login_url='login')
+def ride_cancel(request, ride_id):
+  ride = get_object_or_404(Ride, id=ride_id)
+  if request.user == ride.driver:
+    ride.status = 'cancelled'
+    ride.save()
+    return redirect('pagina_motorista')
+  else:
+    requestPart = get_object_or_404(RequestParticipationInRide, ride=ride, passenger=request.user)
+    requestPart.status = 'cancelled'
+    requestPart.save()
+    return redirect('pagina_passageiro')
+
+@login_required(login_url='login')
+def request_lost_item(request, ride_id):
+  ride = get_object_or_404(Ride, id=ride_id)
+  if request.method == 'GET':
+    return render(request, 'request_lost_item.html', {'ride': ride})
+  if request.method == 'POST':
+    item_name = request.POST.get('item')
+    item_description = request.POST.get('description')
+    if item_name and item_description:
+      if ride.status == 'finished':
+        request_lost_item = LostItemRequest.objects.create(ride=ride, passenger=request.user, item_name=item_name, item_description=item_description)
+        request_lost_item.save()
+        return redirect('pagina_passageiro')
+      else:
+        return HttpResponse("Você só pode solicitar itens perdidos de corridas finalizadas!")
+    else:
+      return HttpResponse("Preencha todos os campos corretamente!")
+
+@login_required(login_url='login')
+def lost_items(request):
+  username = request.user.username
+  username = username.capitalize()
+  lost_items = LostItemRequest.objects.filter(ride__driver=request.user)
+  return render(request, 'lost_items.html', {'username': username, 'lost_items': lost_items})
+
+@login_required(login_url='login')
+def rate_ride(request, ride_id):
+  ride = get_object_or_404(Ride, id=ride_id)
+  if request.method == 'GET':
+    return render(request, 'review_driver.html', {'ride': ride})
+  if request.method == 'POST':
+    rating = request.POST.get('rate')
+    review = request.POST.get('description')
+    if rating:
+      if ride.status == 'finished':
+        review_driver = RideReview.objects.create(ride=ride, passenger=request.user, rating=rating, review=review)
+        review_driver.save()
+        return redirect('pagina_passageiro')
+      else:
+        return HttpResponse("Você só pode avaliar motoristas de corridas finalizadas!")
+    else:
+      return HttpResponse("Preencha todos os campos corretamente!")
+    
+@login_required(login_url='login')
+def view_rate(request):
+  username = request.user.username
+  username = username.capitalize()
+  reviews = RideReview.objects.filter(ride__driver=request.user)
+  return render(request, 'driver_rate.html', {'username': username, 'reviews': reviews})
