@@ -94,3 +94,31 @@ https://drive.google.com/file/d/1TTIhNHhOeViO3uZ1M49uT7zyaNy8Zkch/view?usp=shari
 
 ## 8) Screencast do site:
 https://drive.google.com/file/d/1kN-28wP9p8D-htF3tLq8Yvmq6Oq8-OeS/view?usp=sharing
+
+
+# Entrega 4:
+
+## 1) Quadro da Sprint 3:
+![image](https://github.com/TheEuri/cesaride/assets/132586951/9ae873fe-6b32-49b0-b252-ce3c31fa0020)
+
+## 2) Diagrama de atividades atualizado:
+'''colar aqui'''
+
+## 3) Screencast do Lo-Fi com ênfase nas novas histórias:
+'''colar aqui'''
+
+## 4) Issue / Bug Tracker atualizado:
+![image](https://github.com/TheEuri/cesaride/assets/132586951/c69487f5-e2c7-4999-9295-8fc9323a1f4e)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/daf28a3d-6d0a-47b2-8161-63ceed92cdfe)
+
+
+
+## 5) CI / CD com build e deployment atualizado:
+'''colar aqui screencast'''
+
+## 6) Testes de Sistema (E2E) Automatizados:
+'''colar screencast aqui'''
+
+## 7) Atualizações sobre o Pair Programming:
+
+## 8) Screencast do Site:
