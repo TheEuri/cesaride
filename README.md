@@ -96,7 +96,7 @@ https://drive.google.com/file/d/1TTIhNHhOeViO3uZ1M49uT7zyaNy8Zkch/view?usp=shari
 https://drive.google.com/file/d/1kN-28wP9p8D-htF3tLq8Yvmq6Oq8-OeS/view?usp=sharing
 
 
-#Entrega 4:
+# Entrega 4:
 
 ## 1) Quadro da Sprint 3:
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/9ae873fe-6b32-49b0-b252-ce3c31fa0020)
