@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='ride',
             name='status',
-            field=models.CharField(default='active', max_length=1),
+            field=models.CharField(default='active', max_length=14),
         ),
     ]

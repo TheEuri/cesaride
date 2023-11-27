@@ -32,6 +32,8 @@ def signup(request):
         pass2 = request.POST.get('password2')
         phone_number = request.POST.get('phone_number')
 
+        print(username, email, pass1, pass2, phone_number)
+
         if User.objects.filter(username=username):
             return HttpResponse("Usuário já existe! Por favor, tentre outro nome")
 
@@ -50,6 +52,7 @@ def signup(request):
 
             my_user = User.objects.create_user(username=username, email=email, password=pass1, phone_number=phone_number)
             my_user.save()
+            print("Usuário criado com sucesso!")
             return redirect('login')
 
     return render(request, 'registro/signup.html')
@@ -62,6 +65,7 @@ def signin(request):
         user = authenticate(request, username=username, password=pass1)
         if user is not None:
             login(request, user)
+            print("Usuário logado com sucesso!")
             return redirect('choose_role')
         else:
             return HttpResponse("Nome de Usuário ou Senha incorretos!")
