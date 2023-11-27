@@ -10,7 +10,6 @@ import time
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("--headless")
 browser = webdriver.Chrome(options=chrome_options)
 
 
@@ -147,64 +146,66 @@ class TestSignupLogin(TestCase):
 
         assert browser.current_url == "http://127.0.0.1:8000/"
         
-    # # #entrando como passageiro para solicitar a corrida
-    # def test_h_register_driver(self):
-    #     browser.get("http://127.0.0.1:8000/signup/") 
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, "username").send_keys(username2)
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, "email").send_keys(username2 + "@gmail.com")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, "password1").send_keys(password)
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, "password2").send_keys(password)
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, "phone_number").send_keys("123456789")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, "is_student").click()
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, "submit").click()
-    #     time.sleep(1)
-    #     assert browser.current_url == "http://127.0.0.1:8000/"
+    # #entrando como passageiro para solicitar a corrida
+    def test_h_register_driver(self):
+        browser.get("http://127.0.0.1:8000/signup/") 
+        time.sleep(0.5)
+        browser.find_element(By.ID, "username").send_keys(username2)
+        time.sleep(0.5)
+        browser.find_element(By.ID, "email").send_keys(username2 + "@gmail.com")
+        time.sleep(0.5)
+        browser.find_element(By.ID, "password1").send_keys(password)
+        time.sleep(0.5)
+        browser.find_element(By.ID, "password2").send_keys(password)
+        time.sleep(0.5)
+        browser.find_element(By.ID, "phone_number").send_keys("123456789")
+        time.sleep(0.5)
+        browser.find_element(By.ID, "is_student").click()
+        time.sleep(0.5)
+        browser.find_element(By.ID, "submit").click()
+        time.sleep(1)
+        assert browser.current_url == "http://127.0.0.1:8000/"
     
 
-    # def test_i_login_passenger(self): 
-    #     time.sleep(0.75)
-    #     browser.find_element(By.ID, "username").send_keys(username2)
-    #     time.sleep(0.75)
-    #     browser.find_element(By.ID, "password").send_keys(password)
-    #     time.sleep(1)
-    #     browser.find_element(By.ID, "submit").click()
-    #     assert browser.current_url == "http://127.0.0.1:8000/choose_role/"
+    def test_i_login_passenger(self): 
+        time.sleep(0.75)
+        browser.find_element(By.ID, "username").send_keys(username2)
+        time.sleep(0.75)
+        browser.find_element(By.ID, "password").send_keys(password)
+        time.sleep(1)
+        browser.find_element(By.ID, "submit").click()
+        assert browser.current_url == "http://127.0.0.1:8000/choose_role/"
     
-    # def test_j_choose_role_passenger(self):
-    #     time.sleep(1)
-    #     select_element = browser.find_element(By.ID, 'role')
-    #     select = Select(select_element)
-    #     select.select_by_index(1)
-    #     time.sleep(0.75)
-    #     browser.find_element(By.ID, "submit").click()
-    #     time.sleep(0.75)
-    #     assert browser.current_url == "http://127.0.0.1:8000/passanger_home/"
+    def test_j_choose_role_passenger(self):
+        time.sleep(1)
+        select_element = browser.find_element(By.ID, 'role')
+        select = Select(select_element)
+        select.select_by_index(1)
+        time.sleep(0.75)
+        browser.find_element(By.ID, "submit").click()
+        time.sleep(0.75)
+        assert browser.current_url == "http://127.0.0.1:8000/passanger_home/"
     
-    # def test_k_request_travel(self):
-    #     time.sleep(0.75)
-    #    # browser.find_element(By.XPATH,'/html/body/div[2]/div/div[1]/div/a')
-    #     browser.get('http://127.0.0.1:8000/passenger/request_ride/1/')
-    #     time.sleep(0.75)
-    #     browser.find_element(By.ID, "origin").send_keys("rua 3")
-    #     time.sleep(0.75)
-    #     browser.find_element(By.ID, "destination").send_keys("rua 4")
-    #     time.sleep(1.5)
-    #     browser.find_element(By.ID, "submit").click()
-    #     time.sleep(2)
-    #     browser.find_element(By.ID, "back").click()
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, "menu-toggle").click()
-    #     time.sleep(0.5)
-    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
-    #     time.sleep(0.75)
+    def test_k_request_travel(self):
+        time.sleep(0.75)
+       # browser.find_element(By.XPATH,'/html/body/div[2]/div/div[1]/div/a')
+        browser.get('http://127.0.0.1:8000/passenger/request_ride/1/')
+        time.sleep(0.75)
+        browser.find_element(By.ID, "origin").send_keys("rua 3")
+        time.sleep(0.75)
+        browser.find_element(By.ID, "destination").send_keys("rua 4")
+        time.sleep(1.5)
+        browser.find_element(By.ID, "submit").click()
+        time.sleep(2)
+        browser.find_element(By.ID, "back").click()
+        time.sleep(0.5)
+        browser.find_element(By.ID, "menu-toggle").click()
+        time.sleep(0.5)
+        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
+        time.sleep(0.75)
+
+        assert browser.current_url == "http://127.0.0.1:8000/"
        
     # #entrando com a 2a conta para solicitar corrida 
     
