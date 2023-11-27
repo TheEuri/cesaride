@@ -111,7 +111,7 @@ class TestSignupLogin(TestCase):
         print(passengers_element.get_attribute("value"))
 
         time_element = browser.find_element(By.ID, 'time')
-        time_element.send_keys("10:30")
+        time_element.send_keys("10")
         print(time_element.get_attribute("value"))
 
         observations_element = browser.find_element(By.ID, 'observations')
