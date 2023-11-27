@@ -62,7 +62,7 @@ class TestSignupLogin(TestCase):
       browser.find_element(By.ID, "menu-toggle").click()
       time.sleep(0.5)
       sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-      sidebar_nav.find_element(By.XPATH, '//a[@href="/driver/cars/create/"]').click()
+      sidebar_nav.find_element(By.ID, 'create-car').click()
       time.sleep(1)
       browser.find_element(By.ID, "id_brand").send_keys("Minha marca")
       time.sleep(0.5)
