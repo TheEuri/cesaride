@@ -107,29 +107,30 @@ class TestSignupLogin(TestCase):
     
     def test_f_create_rice_2(self):
         time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div[2]/div[1]/a[1]").click()
+        browser.find_element(By.ID, "btn-create-ride").click()
         time.sleep(0.5)
         
-        select_element = browser.find_element(By.XPATH, '/html/body/div/div/form/div[1]/select')
+        select_element = browser.find_element(By.ID, 'car')
         select = Select(select_element)
         select.select_by_index(0)
 
-        browser.find_element(By.XPATH, '/html/body/div/div/form/div[2]/input').send_keys("rua 11")
+        browser.find_element(By.ID, 'origin').send_keys("rua 12")
         time.sleep(0.5)
-        browser.find_element(By.XPATH, '/html/body/div/div/form/div[3]/input').send_keys("rua 12")
+        browser.find_element(By.ID, 'destination').send_keys("rua 22")
         time.sleep(0.5)
-        browser.find_element(By.XPATH, '/html/body/div/div/form/div[4]/div/input').send_keys("12")
+        browser.find_element(By.ID, 'price').send_keys("12")
         time.sleep(0.5)
-        browser.find_element(By.XPATH, '/html/body/div/div/form/div[5]/input').send_keys("4")
+        browser.find_element(By.ID, 'passengers').send_keys("2")
         time.sleep(0.5)
-        browser.find_element(By.XPATH, '/html/body/div/div/form/div[6]/input').send_keys("10:30")
+        browser.find_element(By.ID, 'time').send_keys("10:32")
         time.sleep(0.5)
-        browser.find_element(By.XPATH, '/html/body/div/div/form/div[7]/textarea').send_keys("Observação")
+        browser.find_element(By.ID, 'observations').send_keys("Observação2")
         time.sleep(0.5)
-        browser.find_element(By.XPATH, '/html/body/div/div/form/button').click()
-        time.sleep(2)
+        browser.find_element(By.ID, 'submit').click()
+        time.sleep(5)
 
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
+       
         
     # def test_g_cancel_ride(self): 
     #     browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[2]/a").click()
