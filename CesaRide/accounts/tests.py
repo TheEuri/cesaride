@@ -94,62 +94,44 @@ class TestSignupLogin(TestCase):
         select = Select(select_element)
         select.select_by_index(0)
 
-        origin_element = browser.find_element(By.ID, 'origin')
-        origin_element.send_keys("rua 1")
-        print(origin_element.get_attribute("value"))
-
-        destination_element = browser.find_element(By.ID, 'destination')
-        destination_element.send_keys("rua 2")
-        print(destination_element.get_attribute("value"))
-
-        price_element = browser.find_element(By.ID, 'price')
-        price_element.send_keys("10")
-        print(price_element.get_attribute("value"))
-
-        passengers_element = browser.find_element(By.ID, 'passengers')
-        passengers_element.send_keys("1")
-        print(passengers_element.get_attribute("value"))
-
-        time_element = browser.find_element(By.ID, 'time')
-        print(time_element.get_attribute("value"))
-
-        observations_element = browser.find_element(By.ID, 'observations')
-        observations_element.send_keys("Observação")
-        print(observations_element.get_attribute("value"))
-
-        browser.find_element(By.ID, 'submit').click()
-        print(browser.current_url)
-        print(browser.page_source)
+        browser.find_element(By.ID, 'origin').send_keys("rua 1") 
+        time.sleep(0.5) 
+        browser.find_element(By.ID, 'destination').send_keys("rua 2") 
+        time.sleep(0.5) 
+        browser.find_element(By.ID, 'price').send_keys("10") 
+        time.sleep(0.5) 
+        browser.find_element(By.ID, 'passengers').send_keys("1") 
+        time.sleep(0.5) 
+        browser.find_element(By.ID, 'observations').send_keys("Observação") 
+        time.sleep(0.5) 
+        browser.find_element(By.ID, 'submit').click() 
+        time.sleep(5)
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
        
     
-    # def test_f_create_rice_2(self):
-    #     browser.get("http://127.0.0.1:8000/driver_home") 
+    def test_f_create_rice_2(self):        
+        time.sleep(1)
+        browser.find_element(By.ID, "btn-create-ride").click()
+        time.sleep(0.5)
         
-    #     time.sleep(1)
-    #     browser.find_element(By.ID, "btn-create-ride").click()
-    #     time.sleep(0.5)
-        
-    #     select_element = browser.find_element(By.ID, 'car')
-    #     select = Select(select_element)
-    #     select.select_by_index(0)
+        select_element = browser.find_element(By.ID, 'car')
+        select = Select(select_element)
+        select.select_by_index(0)
 
-    #     browser.find_element(By.ID, 'origin').send_keys("rua 12")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'destination').send_keys("rua 22")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'price').send_keys("12")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'passengers').send_keys("2")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'time').send_keys("10:32")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'observations').send_keys("Observação2")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'submit').click()
-    #     time.sleep(5)
-    #     print(browser.current_url)
-    #     assert browser.current_url == "http://127.0.0.1:8000/driver_home"
+        browser.find_element(By.ID, 'origin').send_keys("rua 12")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'destination').send_keys("rua 22")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'price').send_keys("12")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'passengers').send_keys("2")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'observations').send_keys("Observação2")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'submit').click()
+        time.sleep(5)
+        print(browser.current_url)
+        assert browser.current_url == "http://127.0.0.1:8000/driver_home"
        
         
     # def test_g_cancel_ride(self): 
