@@ -120,5 +120,5 @@ https://drive.google.com/file/d/1kN-28wP9p8D-htF3tLq8Yvmq6Oq8-OeS/view?usp=shari
 '''colar screencast aqui'''
 
 ## 7) Atualizações sobre o Pair Programming:
-
+  Na nossa última entrega, o grupo decidiu manter a forma de organização da entrega 3, deixando os membros Alec Theotônio e Felipe Serpa mais flexíveis para auxiliar em outras atividades da equipe. Dessa vez, conseguimos manter uma organização nas atividades semanais e nas sprints, finalizando agr as histórias antes do prazo estipulado, o que permitiu que nossos utlimos dias antes dessa nossa entrega servissem mais para revisão das coisas que  foram feitas do que trabalhar para finalizá-las. Desse modo, essa forma de organização de pair programming agregou ainda mais a equipe, todos gostaram bastante dessa forma de trabalho, pois ao decorrer de todo o percurso conseguimos adquirir bastante conhecimento, manter uma boa comunicação com os membros e deixar o trabalho mais leve e agradável.
 ## 8) Screencast do Site:
