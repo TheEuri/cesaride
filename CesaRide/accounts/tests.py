@@ -9,7 +9,6 @@ import time
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("--headless")
 browser = webdriver.Chrome(options=chrome_options)
 
 
@@ -38,6 +37,7 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         browser.find_element(By.ID, "submit").click()
         time.sleep(1)
+        print(browser.current_url)
         assert browser.current_url == "http://127.0.0.1:8000/"
 
     def test_b_login_driver(self):
@@ -48,6 +48,8 @@ class TestSignupLogin(TestCase):
         browser.find_element(By.ID, "password").send_keys(password)
         time.sleep(0.5)
         browser.find_element(By.ID, "submit").click()
+        print(browser.current_url)
+
         assert browser.current_url == "http://127.0.0.1:8000/choose_role/"
 
     def test_c_choose_role_driver(self):
@@ -55,6 +57,8 @@ class TestSignupLogin(TestCase):
         time.sleep(1)
         browser.find_element(By.ID, "submit").click()
         time.sleep(0.5)
+        print(browser.current_url)
+
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
 
     def test_d_create_vehicle(self):
@@ -76,6 +80,7 @@ class TestSignupLogin(TestCase):
       time.sleep(0.5)
       browser.find_element(By.ID, "submit").click()
       time.sleep(1)
+      print(browser.current_url)
       assert browser.current_url == "http://127.0.0.1:8000/driver_home"
 
     def test_e_create_rice(self):
@@ -101,7 +106,7 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         browser.find_element(By.ID, 'submit').click()
         time.sleep(5)
-
+        print(browser.current_url)
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
        
     
@@ -130,7 +135,7 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         browser.find_element(By.ID, 'submit').click()
         time.sleep(5)
-
+        print(browser.current_url)
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
        
         
