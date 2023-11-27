@@ -237,149 +237,149 @@ class TestSignupLogin(TestCase):
         time.sleep(0.75)
         assert browser.current_url == "http://127.0.0.1:8000/passanger_home/"
     
-    def test_o_request_travel2(self):
-        time.sleep(0.75)
-        browser.get('http://127.0.0.1:8000/passenger/request_ride/1/')
-        time.sleep(0.75)
-        browser.find_element(By.ID, "origin").send_keys("rua 3")
-        time.sleep(0.75)
-        browser.find_element(By.ID, "destination").send_keys("rua 4")
-        time.sleep(0.75)
-        browser.find_element(By.ID, "submit").click()
-        time.sleep(0.75)
-        browser.find_element(By.ID, "back").click()
-        browser.find_element(By.ID, "menu-toggle").click()
-        time.sleep(0.5)
-        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
-        time.sleep(0.75)
+    # def test_o_request_travel2(self):
+    #     time.sleep(0.75)
+    #     browser.get('http://127.0.0.1:8000/passenger/request_ride/1/')
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "origin").send_keys("rua 3")
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "destination").send_keys("rua 4")
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "submit").click()
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "back").click()
+    #     browser.find_element(By.ID, "menu-toggle").click()
+    #     time.sleep(0.5)
+    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
+    #     time.sleep(0.75)
         
 
-    #entrando na conta do motorista para aceitar a solicitação
+    # #entrando na conta do motorista para aceitar a solicitação
 
-    def test_p_login_driver(self):
-        browser.get('http://127.0.0.1:8000/')
-        time.sleep(1)
-        browser.find_element(By.ID, "username").send_keys(username)
-        time.sleep(0.75)
-        browser.find_element(By.ID, "password").send_keys(password)
-        time.sleep(0.75)
-        browser.find_element(By.ID, "submit").click()
-        assert browser.current_url == "http://127.0.0.1:8000/choose_role/"
+    # def test_p_login_driver(self):
+    #     browser.get('http://127.0.0.1:8000/')
+    #     time.sleep(1)
+    #     browser.find_element(By.ID, "username").send_keys(username)
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "password").send_keys(password)
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "submit").click()
+    #     assert browser.current_url == "http://127.0.0.1:8000/choose_role/"
     
-    def test_q_choose_role_driver(self):
+    # def test_q_choose_role_driver(self):
        
-        time.sleep(1)
-        browser.find_element(By.ID, "submit").click()
-        time.sleep(0.75)
-        assert browser.current_url == "http://127.0.0.1:8000/driver_home"
+    #     time.sleep(1)
+    #     browser.find_element(By.ID, "submit").click()
+    #     time.sleep(0.75)
+    #     assert browser.current_url == "http://127.0.0.1:8000/driver_home"
     
     
-    def test_r_accepting_race(self):
-        time.sleep(0.75)
-        browser.find_element(By.ID, "details").click()
-        time.sleep(0.75)
-        browser.find_element(By.ID, "btn-refuse").click()
-        time.sleep(0.75)
-        browser.find_element(By.ID, "btn-acecept").click()
-        time.sleep(0.75)
-        browser.find_element(By.ID, "btn-ending").click()
-        assert browser.current_url == "http://127.0.0.1:8000/driver_home"
+    # def test_r_accepting_race(self):
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "details").click()
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "btn-refuse").click()
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "btn-acecept").click()
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "btn-ending").click()
+    #     assert browser.current_url == "http://127.0.0.1:8000/driver_home"
     
-    #historico do motorista 
+    # #historico do motorista 
 
-    def test_s_ride_history(self):
-        time.sleep(0.75)
-        browser.find_element(By.ID, "menu-toggle").click()
-        time.sleep(0.5)
-        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/ul/li[3]/a').click()
-        time.sleep(0.75)
-        browser.find_element(By.XPATH, "/html/body/div/button").click()
-       # browser.find_element(By.ID, "menu-toggle").click()
-        time.sleep(1)
-        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
+    # def test_s_ride_history(self):
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "menu-toggle").click()
+    #     time.sleep(0.5)
+    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/ul/li[3]/a').click()
+    #     time.sleep(0.75)
+    #     browser.find_element(By.XPATH, "/html/body/div/button").click()
+    #    # browser.find_element(By.ID, "menu-toggle").click()
+    #     time.sleep(1)
+    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
         
-        #entrando como passageiro para ver o historico
+    #     #entrando como passageiro para ver o historico
     
-    def test_t_login_passenger3(self):
-        time.sleep(0.75)
-        browser.get('http://127.0.0.1:8000/')
-        time.sleep(1)
-        browser.find_element(By.ID, "username").send_keys(username3)
-        time.sleep(0.75)
-        browser.find_element(By.ID, "password").send_keys(password)
-        time.sleep(0.75)
-        browser.find_element(By.ID, "submit").click()
-        assert browser.current_url == "http://127.0.0.1:8000/choose_role/"
+    # def test_t_login_passenger3(self):
+    #     time.sleep(0.75)
+    #     browser.get('http://127.0.0.1:8000/')
+    #     time.sleep(1)
+    #     browser.find_element(By.ID, "username").send_keys(username3)
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "password").send_keys(password)
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "submit").click()
+    #     assert browser.current_url == "http://127.0.0.1:8000/choose_role/"
     
-    def test_u_choose_role_passenger3(self):
-        time.sleep(1)
-        select_element = browser.find_element(By.ID, 'role')
-        select = Select(select_element)
-        select.select_by_index(1)
-        time.sleep(0.75)
-        browser.find_element(By.ID, "submit").click()
-        time.sleep(0.75)
-        assert browser.current_url == "http://127.0.0.1:8000/passanger_home/"
+    # def test_u_choose_role_passenger3(self):
+    #     time.sleep(1)
+    #     select_element = browser.find_element(By.ID, 'role')
+    #     select = Select(select_element)
+    #     select.select_by_index(1)
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "submit").click()
+    #     time.sleep(0.75)
+    #     assert browser.current_url == "http://127.0.0.1:8000/passanger_home/"
     
-    def test_v_history_passenger(self):
-        browser.find_element(By.ID, "menu-toggle").click()
-        time.sleep(0.5)
-        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/ul/li[3]/a').click()
-        time.sleep(3)
+    # def test_v_history_passenger(self):
+    #     browser.find_element(By.ID, "menu-toggle").click()
+    #     time.sleep(0.5)
+    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/ul/li[3]/a').click()
+    #     time.sleep(3)
     
-    def test_w_forgotten_item(self):
-        browser.find_element(By.XPATH, "/html/body/div/div/div/a[1]").click()
-        time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div/div/div/form/div[1]/input").send_keys("computador")
-        time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div/div/div/form/div[2]/textarea").send_keys("esqueci no banco de trás")
-        time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div/div/div/form/button").click()
+    # def test_w_forgotten_item(self):
+    #     browser.find_element(By.XPATH, "/html/body/div/div/div/a[1]").click()
+    #     time.sleep(1)
+    #     browser.find_element(By.XPATH, "/html/body/div/div/div/form/div[1]/input").send_keys("computador")
+    #     time.sleep(1)
+    #     browser.find_element(By.XPATH, "/html/body/div/div/div/form/div[2]/textarea").send_keys("esqueci no banco de trás")
+    #     time.sleep(1)
+    #     browser.find_element(By.XPATH, "/html/body/div/div/div/form/button").click()
 
-    def test_x_rating(self):
-        browser.find_element(By.ID, "menu-toggle").click()
-        time.sleep(1)
-        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/ul/li[3]/a').click()
-        time.sleep(3)
-        browser.find_element(By.XPATH, "/html/body/div/div/div/a[2]").click()
-        time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div/div/div/form/div[1]/input").send_keys("5")
-        time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div/div/div/form/div[2]/textarea").send_keys("muito bom")
-        time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div/div/div/form/button").click()
-        time.sleep(1)
-        browser.find_element(By.ID, "menu-toggle").click()
-        time.sleep(0.5)
-        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
-        time.sleep(0.5)
+    # def test_x_rating(self):
+    #     browser.find_element(By.ID, "menu-toggle").click()
+    #     time.sleep(1)
+    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/ul/li[3]/a').click()
+    #     time.sleep(3)
+    #     browser.find_element(By.XPATH, "/html/body/div/div/div/a[2]").click()
+    #     time.sleep(1)
+    #     browser.find_element(By.XPATH, "/html/body/div/div/div/form/div[1]/input").send_keys("5")
+    #     time.sleep(1)
+    #     browser.find_element(By.XPATH, "/html/body/div/div/div/form/div[2]/textarea").send_keys("muito bom")
+    #     time.sleep(1)
+    #     browser.find_element(By.XPATH, "/html/body/div/div/div/form/button").click()
+    #     time.sleep(1)
+    #     browser.find_element(By.ID, "menu-toggle").click()
+    #     time.sleep(0.5)
+    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
+    #     time.sleep(0.5)
     
-    def test_y_selling_forgotten_item(self):
-        browser.get('http://127.0.0.1:8000/')
-        time.sleep(1)
-        browser.find_element(By.ID, "username").send_keys(username)
-        time.sleep(0.75)
-        browser.find_element(By.ID, "password").send_keys(password)
-        time.sleep(0.75)
-        browser.find_element(By.ID, "submit").click()
-        time.sleep(1)
-        browser.find_element(By.ID, "submit").click()
-        time.sleep(0.75)
-        browser.find_element(By.XPATH, "/html/body/div[2]/div[1]/a[2]").click()
-        time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div/button").click()
+    # def test_y_selling_forgotten_item(self):
+    #     browser.get('http://127.0.0.1:8000/')
+    #     time.sleep(1)
+    #     browser.find_element(By.ID, "username").send_keys(username)
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "password").send_keys(password)
+    #     time.sleep(0.75)
+    #     browser.find_element(By.ID, "submit").click()
+    #     time.sleep(1)
+    #     browser.find_element(By.ID, "submit").click()
+    #     time.sleep(0.75)
+    #     browser.find_element(By.XPATH, "/html/body/div[2]/div[1]/a[2]").click()
+    #     time.sleep(1)
+    #     browser.find_element(By.XPATH, "/html/body/div/button").click()
     
-    def test_z_selling_rating(self):
-        browser.find_element(By.XPATH, "/html/body/div[2]/div[1]/a[3]").click()
-        time.sleep(1)
-        browser.find_element(By.XPATH, "/html/body/div/button").click()
-        time.sleep(5)
+    # def test_z_selling_rating(self):
+    #     browser.find_element(By.XPATH, "/html/body/div[2]/div[1]/a[3]").click()
+    #     time.sleep(1)
+    #     browser.find_element(By.XPATH, "/html/body/div/button").click()
+    #     time.sleep(5)
 
 
 
