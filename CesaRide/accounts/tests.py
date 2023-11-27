@@ -57,26 +57,26 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
 
-    # def test_d_create_vehicle(self):
-    #   time.sleep(1)
-    #   browser.find_element(By.ID, "menu-toggle").click()
-    #   time.sleep(0.5)
-    #   sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-    #   sidebar_nav.find_element(By.XPATH, '//a[@href="/driver/cars/create/"]').click()
-    #   time.sleep(1)
-    #   browser.find_element(By.ID, "id_brand").send_keys("Minha marca")
-    #   time.sleep(0.5)
-    #   browser.find_element(By.ID, "id_model").send_keys("Meu modelo")
-    #   time.sleep(0.5)
-    #   browser.find_element(By.ID, "id_plate").send_keys("ABC1234")
-    #   time.sleep(0.5)
-    #   browser.find_element(By.ID, "id_observations")
-    #   time.sleep(0.5)
-    #   browser.find_element(By.ID, "id_observations").send_keys("Minhas observações")
-    #   time.sleep(0.5)
-    #   browser.find_element(By.XPATH, "//button[@type='submit']").click()
-    #   time.sleep(1)
-    #   assert browser.current_url == "http://127.0.0.1:8000/driver_home"
+    def test_d_create_vehicle(self):
+      time.sleep(1)
+      browser.find_element(By.ID, "menu-toggle").click()
+      time.sleep(0.5)
+      sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+      sidebar_nav.find_element(By.XPATH, '//a[@href="/driver/cars/create/"]').click()
+      time.sleep(1)
+      browser.find_element(By.ID, "id_brand").send_keys("Minha marca")
+      time.sleep(0.5)
+      browser.find_element(By.ID, "id_model").send_keys("Meu modelo")
+      time.sleep(0.5)
+      browser.find_element(By.ID, "id_plate").send_keys("ABC1234")
+      time.sleep(0.5)
+      browser.find_element(By.ID, "id_observations")
+      time.sleep(0.5)
+      browser.find_element(By.ID, "id_observations").send_keys("Minhas observações")
+      time.sleep(0.5)
+      browser.find_element(By.XPATH, "//button[@type='submit']").click()
+      time.sleep(1)
+      assert browser.current_url == "http://127.0.0.1:8000/driver_home"
 
     # def test_e_create_rice(self):
     #     time.sleep(1)
