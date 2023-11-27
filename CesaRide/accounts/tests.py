@@ -101,42 +101,48 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         browser.find_element(By.ID, 'submit').click()
         time.sleep(5)
+
+        assert browser.current_url == "http://127.0.0.1:8000/driver_home"
        
     
-    # def test_f_create_rice_2(self):
-    #     time.sleep(1)
-    #     browser.find_element(By.XPATH, "/html/body/div[2]/div[1]/a[1]").click()
-    #     time.sleep(0.5)
+    def test_f_create_rice_2(self):
+        time.sleep(1)
+        browser.find_element(By.XPATH, "/html/body/div[2]/div[1]/a[1]").click()
+        time.sleep(0.5)
         
-    #     select_element = browser.find_element(By.XPATH, '/html/body/div/div/form/div[1]/select')
-    #     select = Select(select_element)
-    #     select.select_by_index(0)
+        select_element = browser.find_element(By.XPATH, '/html/body/div/div/form/div[1]/select')
+        select = Select(select_element)
+        select.select_by_index(0)
 
-    #     browser.find_element(By.XPATH, '/html/body/div/div/form/div[2]/input').send_keys("rua 11")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.XPATH, '/html/body/div/div/form/div[3]/input').send_keys("rua 12")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.XPATH, '/html/body/div/div/form/div[4]/div/input').send_keys("12")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.XPATH, '/html/body/div/div/form/div[5]/input').send_keys("4")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.XPATH, '/html/body/div/div/form/div[6]/input').send_keys("10:30")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.XPATH, '/html/body/div/div/form/div[7]/textarea').send_keys("Observação")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.XPATH, '/html/body/div/div/form/button').click()
-    #     time.sleep(2)
+        browser.find_element(By.XPATH, '/html/body/div/div/form/div[2]/input').send_keys("rua 11")
+        time.sleep(0.5)
+        browser.find_element(By.XPATH, '/html/body/div/div/form/div[3]/input').send_keys("rua 12")
+        time.sleep(0.5)
+        browser.find_element(By.XPATH, '/html/body/div/div/form/div[4]/div/input').send_keys("12")
+        time.sleep(0.5)
+        browser.find_element(By.XPATH, '/html/body/div/div/form/div[5]/input').send_keys("4")
+        time.sleep(0.5)
+        browser.find_element(By.XPATH, '/html/body/div/div/form/div[6]/input').send_keys("10:30")
+        time.sleep(0.5)
+        browser.find_element(By.XPATH, '/html/body/div/div/form/div[7]/textarea').send_keys("Observação")
+        time.sleep(0.5)
+        browser.find_element(By.XPATH, '/html/body/div/div/form/button').click()
+        time.sleep(2)
+
+        assert browser.current_url == "http://127.0.0.1:8000/driver_home"
         
-    # def test_g_cancel_ride(self): 
-    #     browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[2]/a").click()
-    #     time.sleep(1)
-    #     browser.find_element(By.XPATH, "/html/body/div[2]/div/div/strong/div[2]/a").click()
-    #     time.sleep(1)
-    #     browser.find_element(By.ID, "menu-toggle").click()
-    #     time.sleep(0.5)
-    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
-    #     time.sleep(0.5)
+    def test_g_cancel_ride(self): 
+        browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[2]/a").click()
+        time.sleep(1)
+        browser.find_element(By.XPATH, "/html/body/div[2]/div/div/strong/div[2]/a").click()
+        time.sleep(1)
+        browser.find_element(By.ID, "menu-toggle").click()
+        time.sleep(0.5)
+        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
+        time.sleep(0.5)
+
+        assert browser.current_url == "http://127.0.0.1:8000/"
         
     # # #entrando como passageiro para solicitar a corrida
     # def test_h_register_driver(self):
