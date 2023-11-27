@@ -107,6 +107,13 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         browser.find_element(By.ID, 'submit').click()
         time.sleep(5)
+
+        print(browser.find_element(By.ID, 'origin').get_attribute("value"))
+        print(browser.find_element(By.ID, 'destination').get_attribute("value"))
+        print(browser.find_element(By.ID, 'price').get_attribute("value"))
+        print(browser.find_element(By.ID, 'passengers').get_attribute("value"))
+        print(browser.find_element(By.ID, 'time').get_attribute("value"))
+        print(browser.find_element(By.ID, 'observations').get_attribute("value"))
         print(browser.current_url)
         print(browser.page_source)
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
