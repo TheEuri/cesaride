@@ -78,29 +78,29 @@ class TestSignupLogin(TestCase):
       time.sleep(1)
       assert browser.current_url == "http://127.0.0.1:8000/driver_home"
 
-    # def test_e_create_rice(self):
-    #     time.sleep(1)
-    #     browser.find_element(By.ID, "btn-create-ride").click()
-    #     time.sleep(0.5)
+    def test_e_create_rice(self):
+        time.sleep(1)
+        browser.find_element(By.ID, "btn-create-ride").click()
+        time.sleep(0.5)
         
-    #     select_element = browser.find_element(By.ID, 'car')
-    #     select = Select(select_element)
-    #     select.select_by_index(0)
+        select_element = browser.find_element(By.ID, 'car')
+        select = Select(select_element)
+        select.select_by_index(0)
 
-    #     browser.find_element(By.ID, 'origin').send_keys("rua 1")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'destination').send_keys("rua 2")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'price').send_keys("10")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'passengers').send_keys("1")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'time').send_keys("10:30")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'observations').send_keys("Observação")
-    #     time.sleep(0.5)
-    #     browser.find_element(By.ID, 'submit').click()
-    #     time.sleep(5)
+        browser.find_element(By.ID, 'origin').send_keys("rua 1")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'destination').send_keys("rua 2")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'price').send_keys("10")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'passengers').send_keys("1")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'time').send_keys("10:30")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'observations').send_keys("Observação")
+        time.sleep(0.5)
+        browser.find_element(By.ID, 'submit').click()
+        time.sleep(5)
        
     
     # def test_f_create_rice_2(self):
