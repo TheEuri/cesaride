@@ -39,7 +39,7 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         browser.find_element(By.ID, "submit").click()
         time.sleep(1)
-        print(browser.current_url)
+        
         assert browser.current_url == "http://127.0.0.1:8000/"
 
     def test_b_login_driver(self):
@@ -50,7 +50,7 @@ class TestSignupLogin(TestCase):
         browser.find_element(By.ID, "password").send_keys(password)
         time.sleep(0.5)
         browser.find_element(By.ID, "submit").click()
-        print(browser.current_url)
+        
 
         assert browser.current_url == "http://127.0.0.1:8000/choose_role/"
 
@@ -59,7 +59,7 @@ class TestSignupLogin(TestCase):
         time.sleep(1)
         browser.find_element(By.ID, "submit").click()
         time.sleep(0.5)
-        print(browser.current_url)
+        
 
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
 
@@ -82,7 +82,7 @@ class TestSignupLogin(TestCase):
       time.sleep(0.5)
       browser.find_element(By.ID, "submit").click()
       time.sleep(1)
-      print(browser.current_url)
+      
       assert browser.current_url == "http://127.0.0.1:8000/driver_home"
 
     def test_e_create_rice(self):
@@ -130,22 +130,22 @@ class TestSignupLogin(TestCase):
         time.sleep(0.5)
         browser.find_element(By.ID, 'submit').click()
         time.sleep(5)
-        print(browser.current_url)
+        
         assert browser.current_url == "http://127.0.0.1:8000/driver_home"
        
         
-    # def test_g_cancel_ride(self): 
-    #     browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[2]/a").click()
-    #     time.sleep(1)
-    #     browser.find_element(By.XPATH, "/html/body/div[2]/div/div/strong/div[2]/a").click()
-    #     time.sleep(1)
-    #     browser.find_element(By.ID, "menu-toggle").click()
-    #     time.sleep(0.5)
-    #     sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
-    #     sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
-    #     time.sleep(0.5)
+    def test_g_cancel_ride(self): 
+        browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[2]/a").click()
+        time.sleep(1)
+        browser.find_element(By.XPATH, "/html/body/div[2]/div/div/strong/div[2]/a").click()
+        time.sleep(1)
+        browser.find_element(By.ID, "menu-toggle").click()
+        time.sleep(0.5)
+        sidebar_nav = browser.find_element(By.CLASS_NAME, "sidebar-nav")
+        sidebar_nav.find_element(By.XPATH, '/html/body/div[1]/a/button').click()
+        time.sleep(0.5)
 
-    #     assert browser.current_url == "http://127.0.0.1:8000/"
+        assert browser.current_url == "http://127.0.0.1:8000/"
         
     # # #entrando como passageiro para solicitar a corrida
     # def test_h_register_driver(self):
