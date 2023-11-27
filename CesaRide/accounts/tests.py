@@ -74,7 +74,7 @@ class TestSignupLogin(TestCase):
       time.sleep(0.5)
       browser.find_element(By.ID, "id_observations").send_keys("Minhas observações")
       time.sleep(0.5)
-      browser.find_element(By.XPATH, "//button[@type='submit']").click()
+      browser.find_element(By.ID, "submit").click()
       time.sleep(1)
       assert browser.current_url == "http://127.0.0.1:8000/driver_home"
 
