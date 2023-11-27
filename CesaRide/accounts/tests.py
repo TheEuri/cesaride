@@ -106,6 +106,8 @@ class TestSignupLogin(TestCase):
        
     
     def test_f_create_rice_2(self):
+        browser.get("http://127.0.0.1:8000/driver_home") 
+        
         time.sleep(1)
         browser.find_element(By.ID, "btn-create-ride").click()
         time.sleep(0.5)
