@@ -102,10 +102,11 @@ https://drive.google.com/file/d/1kN-28wP9p8D-htF3tLq8Yvmq6Oq8-OeS/view?usp=shari
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/9ae873fe-6b32-49b0-b252-ce3c31fa0020)
 
 ## 2) Diagrama de atividades atualizado:
-'''colar aqui'''
+![image](https://github.com/TheEuri/cesaride/assets/132586951/1b54bd19-95be-4568-9d6e-f835e702afe7)
+
 
 ## 3) Screencast do Lo-Fi com ênfase nas novas histórias:
-'''colar aqui'''
+https://drive.google.com/file/d/1QqjcH2Mj289ybu7NWYO9gI5N6mEWPd8B/view?usp=sharing
 
 ## 4) Issue / Bug Tracker atualizado:
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/c69487f5-e2c7-4999-9295-8fc9323a1f4e)
@@ -114,11 +115,13 @@ https://drive.google.com/file/d/1kN-28wP9p8D-htF3tLq8Yvmq6Oq8-OeS/view?usp=shari
 
 
 ## 5) CI / CD com build e deployment atualizado:
-'''colar aqui screencast'''
+https://drive.google.com/file/d/1QqjcH2Mj289ybu7NWYO9gI5N6mEWPd8B/view?usp=sharing
 
 ## 6) Testes de Sistema (E2E) Automatizados:
-'''colar screencast aqui'''
+https://drive.google.com/file/d/1rS6wA1JosueIYEereXtSVlap97ZQOjnQ/view?usp=sharing
 
 ## 7) Atualizações sobre o Pair Programming:
   Na nossa última entrega, o grupo decidiu manter a forma de organização da entrega 3, deixando os membros Alec Theotônio e Felipe Serpa mais flexíveis para auxiliar em outras atividades da equipe. Dessa vez, conseguimos manter uma organização nas atividades semanais e nas sprints, finalizando agr as histórias antes do prazo estipulado, o que permitiu que nossos utlimos dias antes dessa nossa entrega servissem mais para revisão das coisas que  foram feitas do que trabalhar para finalizá-las. Desse modo, essa forma de organização de pair programming agregou ainda mais a equipe, todos gostaram bastante dessa forma de trabalho, pois ao decorrer de todo o percurso conseguimos adquirir bastante conhecimento, manter uma boa comunicação com os membros e deixar o trabalho mais leve e agradável.
+  
 ## 8) Screencast do Site:
+https://drive.google.com/file/d/1a-BzPEMpk_fGbaJohOGn-9zMAn06RDeC/view?usp=sharing
