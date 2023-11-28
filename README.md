@@ -100,6 +100,8 @@ https://drive.google.com/file/d/1kN-28wP9p8D-htF3tLq8Yvmq6Oq8-OeS/view?usp=shari
 
 ## 1) Quadro da Sprint 3:
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/9ae873fe-6b32-49b0-b252-ce3c31fa0020)
+![image](https://github.com/TheEuri/cesaride/assets/132586951/7bf4f533-9f12-46f1-9586-3874446e0768)
+
 
 ## 2) Diagrama de atividades atualizado:
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/1b54bd19-95be-4568-9d6e-f835e702afe7)
