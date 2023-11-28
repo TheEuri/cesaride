@@ -106,7 +106,7 @@ https://drive.google.com/file/d/1kN-28wP9p8D-htF3tLq8Yvmq6Oq8-OeS/view?usp=shari
 
 
 ## 3) Screencast do Lo-Fi com ênfase nas novas histórias:
-https://drive.google.com/file/d/1QqjcH2Mj289ybu7NWYO9gI5N6mEWPd8B/view?usp=sharing
+https://drive.google.com/file/d/1xGaU2Qks6NA15J-9Ef7JY5oVEMbRPWgy/view?usp=sharing
 
 ## 4) Issue / Bug Tracker atualizado:
 ![image](https://github.com/TheEuri/cesaride/assets/132586951/c69487f5-e2c7-4999-9295-8fc9323a1f4e)
